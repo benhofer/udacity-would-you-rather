@@ -1,8 +1,7 @@
 import React from 'react';
-import { Navbar, Nav, Button, Modal, Form, Collapse, Card } from 'bootstrap-4-react';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { Card } from 'bootstrap-4-react';
 
-export default function Leaderboard() {
+const Leaderboard = () => {
   return (
     <div className="p-3">
       <Card>
@@ -23,3 +22,5 @@ export default function Leaderboard() {
     </div>
   )
 }
+
+export default Leaderboard; 
