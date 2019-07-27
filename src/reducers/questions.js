@@ -7,6 +7,7 @@ import {
 const initialState = [{
   id: new Date().getTime(),
   description: 'Pizza Toppings',
+  author: 'Ben',
   case1: {
     text: 'Pepperoni and mushrooms',
     votes: 4
@@ -22,10 +23,29 @@ const initialState = [{
 let newstate;
 
 export default function questions(state = initialState, action) {
+  let newstate;
+
   switch (action.type) {
 
     case ADD_QUESTION:
-     
+      newstate = state;
+      let newquestion = {
+        id: action.id,
+        description: action.title,
+        time: new Date().getTime(),
+        author: action.author,
+        case1: {
+          text: action.case1,
+          votes: 0
+        },
+        case2: {
+          text: action.case1,
+          votes: 0
+        }
+      }
+      newstate.push(newquestion);
+
+      console.log(newstate);
       return newstate;
 
     case ANSWER_QUESTION: 

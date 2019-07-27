@@ -11,9 +11,7 @@ const UserName = (props) => {
   return (
     <div>
       Logged in as {
-        props.users.map(user => (
-          user.active === true ? <span>{user.username}</span> : null
-        ))
+        props.users.activeuser
       }
     </div>
   )
