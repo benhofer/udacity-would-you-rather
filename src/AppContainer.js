@@ -10,7 +10,7 @@ const AppContainer = (props) => {
     <Router>
       <div className="App">
         <Route path="/" exact component={Login} />
-        <Route path="/app" exact component={App} />
+        <Route path="/app" component={App} />
       </div>
     </Router>
   );

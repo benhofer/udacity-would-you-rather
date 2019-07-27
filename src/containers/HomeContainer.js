@@ -1,6 +1,7 @@
 import { connect } from 'react-redux'
 import Home from '../components/Home'
 import { ADD_QUESTION } from '../constants/constants';
+import { withRouter } from 'react-router-dom'
 
 const mapStateToProps = state => state;
 
@@ -13,4 +14,4 @@ const HomeContainer = connect(
   mapDispatchToProps
 )(Home)
 
-export default HomeContainer;
+export default withRouter(HomeContainer);

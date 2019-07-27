@@ -24,7 +24,8 @@ const UserNameContainer = connect(
 )(UserName);
 
 
-const App = (props) => {
+const App = ({match}) => {
+  console.log(match)
   return (
     <div>
       <Navbar expand="lg" light bg="light">
@@ -34,22 +35,24 @@ const App = (props) => {
         <div className="d-flex justify-content-around">
           <Navbar.Nav mr="auto">
             <Nav.Item active>
-              <Link className="nav-link" to="/">Home</Link>
+              <a className="nav-link" href={`${match.url}`}>Home</a>
             </Nav.Item>
             <Nav.Item>
-              <Link className="nav-link" to="/leaderboard">Leaderboard</Link>
+              <a className="nav-link" href={`${match.url}/leaderboard/`}>Leaderboard</a>
             </Nav.Item>
             <Nav.Item>
-              <Link className="nav-link" to="/">Logout</Link>
+              <a className="nav-link" href="/">Logout</a>
             </Nav.Item> 
           </Navbar.Nav>
           <UserNameContainer /> 
         </div>
       </Navbar>
-      <Route path="/app/home" exact component={HomeContainer} />
-      <Route path="/app/leaderboard" exact component={LeaderboardContainer} />
+      <Router>
+        <Route path={`${match.path}`} exact component={HomeContainer} />
+        <Route path={`${match.path}/leaderboard`} component={LeaderboardContainer} />
+      </Router>
     </div>
-  )
+  ) 
 }
 
 export default App;
