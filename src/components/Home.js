@@ -4,13 +4,15 @@ import QuestionsSummaryList from './QuestionsSummary';
 
 const Home = (props) => {
 
-  const [title, setTitle] = useState(0);
-  const [case1, setCase1] = useState(1);
-  const [case2, setCase2] = useState(2);
+  const [title, setTitle] = useState(undefined);
+  const [case1, setCase1] = useState(undefined);
+  const [case2, setCase2] = useState(undefined);
+  // const [showModal, setShowModal] = useState(false);
 
-  // const {actions} = this.props;
+  // const handleCloseModal = () => setShowModal(false);
+  // const handleShowModal = () => setShowModal(true);
 
-  console.log(props);
+  const showModal = true;
 
   const handleTitleKeyUp = (e) => {
     setTitle(e.target.value);
@@ -25,13 +27,13 @@ const Home = (props) => {
   }
 
   const saveQuestion = () => {
-    props.addQuestion(new Date().getTime(), title, case1, case2, props.users.activeuser)
+    props.addQuestion(new Date().getTime(), title, case1, case2, props.users.activeuser);
   }
 
   return (
     <div className="p-3">
       <div className="d-flex pb-4 justify-content-between">
-        <Button primary data-toggle="modal" data-target="#exampleModal">New Question</Button>
+        <Button primary data-target="#exampleModal">New Question</Button>
         <Form>
           <Form.Group>
             <div className="d-flex flex-row-reverse">
@@ -48,18 +50,20 @@ const Home = (props) => {
         </Form>
       </div>
 
-      <QuestionsSummaryList />
+      <QuestionsSummaryList questions={props.questions} />
 
       {/* Modal */}
-      <Modal id="exampleModal" fade>
+      <Modal id="exampleModal" show='showModal'  >
         <Modal.Dialog>
           <Modal.Content>
+            
             <Modal.Header>
               <Modal.Title>Add Question</Modal.Title>
               <Modal.Close>
                 <span aria-hidden="true">&times;</span>
               </Modal.Close>
             </Modal.Header>
+
             <Modal.Body>
               <div className="form-group">
                 <label for="titleInput" style={{width: '100%', textAlign: 'center'}}>Title</label>
@@ -74,12 +78,13 @@ const Home = (props) => {
                 <input onKeyUp={handleCase2KeyUp} type="text" className="form-control" id="case2Input" placeholder="Case 2" />
               </div> 
               <h2 style={{textAlign: 'center', margin: '0 auto', width: '40px', height: '40px', borderRadius: '40px', background: 'black', color: 'white'}}>?</h2>
-
             </Modal.Body>
+
             <Modal.Footer>
-              <Button secondary data-dismiss="modal">Close</Button>
+              <Button secondary >Close</Button>
               <Button primary onClick={saveQuestion}>Save Question</Button>
             </Modal.Footer>
+
           </Modal.Content>
         </Modal.Dialog>
       </Modal>

@@ -1,6 +1,6 @@
 import React from 'react';
-import { Navbar, Nav, Collapse} from 'bootstrap-4-react';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { Navbar, Nav } from 'bootstrap-4-react';
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import HomeContainer from '../containers/HomeContainer';
 import LeaderboardContainer from '../containers/LeaderboardContainer';
 import { connect } from 'react-redux'
@@ -33,22 +33,40 @@ const App = ({match}) => {
         <div className="d-flex justify-content-around">
           <Navbar.Nav mr="auto">
             <Nav.Item active>
-              <a className="nav-link" href={`${match.url}`}>Home</a>
+              <Link 
+                className="nav-link" 
+                to={`${match.url}`}
+                activeStyle={{
+                  textDecoration: 'none',
+                  color: 'black'
+                }}>Home</Link>
             </Nav.Item>
             <Nav.Item>
-              <a className="nav-link" href={`${match.url}/leaderboard/`}>Leaderboard</a>
+              <Link 
+                className="nav-link" 
+                to={`${match.url}/leaderboard/`}
+                activeStyle={{
+                  textDecoration: 'none',
+                  color: 'black'
+                }}>Leaderboard</Link>
             </Nav.Item>
             <Nav.Item>
-              <a className="nav-link" href="/">Logout</a>
+              <Link 
+                className="nav-link" 
+                to="/"
+                activeStyle={{
+                  textDecoration: 'none',
+                  color: 'black'
+                }}>Logout</Link>
             </Nav.Item> 
           </Navbar.Nav>
           <UserNameContainer /> 
         </div>
       </Navbar>
-      <Router>
+      <Switch>
         <Route path={`${match.path}`} exact component={HomeContainer} />
         <Route path={`${match.path}/leaderboard`} component={LeaderboardContainer} />
-      </Router>
+      </Switch>
     </div>
   ) 
 }

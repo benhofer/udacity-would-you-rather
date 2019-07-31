@@ -5,7 +5,7 @@ import {
 } from '../constants/constants'
 
 const initialState = [{
-  id: new Date().getTime(),
+  id: 1,
   description: 'Pizza Toppings',
   author: 'Ben',
   case1: {
