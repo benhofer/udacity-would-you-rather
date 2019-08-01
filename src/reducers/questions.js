@@ -28,7 +28,6 @@ export default function questions(state = initialState, action) {
   switch (action.type) {
 
     case ADD_QUESTION:
-      newstate = state;
       let newquestion = {
         id: action.id,
         description: action.title,
@@ -43,10 +42,7 @@ export default function questions(state = initialState, action) {
           votes: 0
         }
       }
-      newstate.push(newquestion);
-
-      console.log(newstate);
-      return newstate;
+      return [...state, newquestion];
 
     case ANSWER_QUESTION: 
       

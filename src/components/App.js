@@ -36,28 +36,19 @@ const App = ({match}) => {
               <Link 
                 className="nav-link" 
                 to={`${match.url}`}
-                activeStyle={{
-                  textDecoration: 'none',
-                  color: 'black'
-                }}>Home</Link>
+                >Home</Link>
             </Nav.Item>
             <Nav.Item>
               <Link 
                 className="nav-link" 
                 to={`${match.url}/leaderboard/`}
-                activeStyle={{
-                  textDecoration: 'none',
-                  color: 'black'
-                }}>Leaderboard</Link>
+                >Leaderboard</Link>
             </Nav.Item>
             <Nav.Item>
               <Link 
                 className="nav-link" 
                 to="/"
-                activeStyle={{
-                  textDecoration: 'none',
-                  color: 'black'
-                }}>Logout</Link>
+                >Logout</Link>
             </Nav.Item> 
           </Navbar.Nav>
           <UserNameContainer /> 

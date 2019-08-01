@@ -7,15 +7,10 @@ const Home = (props) => {
   const [title, setTitle] = useState(undefined);
   const [case1, setCase1] = useState(undefined);
   const [case2, setCase2] = useState(undefined);
-  // const [showModal, setShowModal] = useState(false);
-
-  // const handleCloseModal = () => setShowModal(false);
-  // const handleShowModal = () => setShowModal(true);
-
-  const showModal = true;
 
   const handleTitleKeyUp = (e) => {
-    setTitle(e.target.value);
+    const val = e.target.value;
+    setTitle(val);
   }
 
   const handleCase1KeyUp = (e) => {
@@ -33,7 +28,7 @@ const Home = (props) => {
   return (
     <div className="p-3">
       <div className="d-flex pb-4 justify-content-between">
-        <Button primary data-target="#exampleModal">New Question</Button>
+        <Button primary data-toggle="modal" data-target="#newQuestionModal">New Question</Button>
         <Form>
           <Form.Group>
             <div className="d-flex flex-row-reverse">
@@ -49,11 +44,11 @@ const Home = (props) => {
           </Form.Group>
         </Form>
       </div>
-
+      
       <QuestionsSummaryList questions={props.questions} />
 
       {/* Modal */}
-      <Modal id="exampleModal" show='showModal'  >
+      <Modal id="newQuestionModal" fade>
         <Modal.Dialog>
           <Modal.Content>
             
@@ -81,8 +76,8 @@ const Home = (props) => {
             </Modal.Body>
 
             <Modal.Footer>
-              <Button secondary >Close</Button>
-              <Button primary onClick={saveQuestion}>Save Question</Button>
+              <Button secondary data-dismiss="modal">Close</Button>
+              <Button primary data-dismiss="modal" onClick={saveQuestion}>Save Question</Button>
             </Modal.Footer>
 
           </Modal.Content>
