@@ -23,7 +23,6 @@ const UserNameContainer = connect(
 
 
 const App = ({match}) => {
-  console.log(match)
   return (
     <div>
       <Navbar expand="lg" light bg="light">
@@ -32,15 +31,15 @@ const App = ({match}) => {
         </Navbar.Brand>
         <div className="d-flex justify-content-around">
           <Navbar.Nav mr="auto">
-            <Nav.Item active>
+            <Nav.Item>
               <Link 
-                className="nav-link" 
+                className={`${window.location.pathname === ('/app' || '/app/') ? 'active' : ''} nav-link`}
                 to={`${match.url}`}
                 >Home</Link>
             </Nav.Item>
             <Nav.Item>
               <Link 
-                className="nav-link" 
+                className={`${window.location.pathname  === ('/app/leaderboard/' || '/app/leaderboard') ? 'active' : ''} nav-link`}
                 to={`${match.url}/leaderboard/`}
                 >Leaderboard</Link>
             </Nav.Item>
