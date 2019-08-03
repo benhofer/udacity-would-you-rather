@@ -1,26 +1,38 @@
 import React from 'react';
-import { Card } from 'bootstrap-4-react';
+import { Card, Button, Modal  } from 'bootstrap-4-react';
 
-const Leaderboard = (props) => {
-  console.log(props.questions)
 
+const Leaderboard = (props) => {  
+  const rowstyle = {fontSize: '18px', lineHeight: 1.5}
   return (
-    <div className="p-3">
+    <div className="p-3" style={{maxWidth: '800px', margin: '0 auto'}}>
       { 
         props.questions.map((q) => (
-            <Card>
+            <Card className="mb-4">
               <Card.Header>{q.description}</Card.Header>
               <Card.Body>
-                <Card.Title>Would You Rather...</Card.Title>
-                <Card.Text>
-                  {q.case1.text}
+                <Card.Title className="border-bottom pb-2 text-center">Would You Rather...</Card.Title>
+                <Card.Text className="d-flex justify-content-between border-bottom pb-2" style={rowstyle}>
+                  <div className="pr-4 d-flex">
+                    <div style={{width: '100px', fontWeight: 'bold', display: 'inline-block'}}>{q.case1.votes} Votes</div>
+                    <div>&bull; {q.case1.text}</div>
+                  </div>
+                  <Button primary>
+                    Vote
+                  </Button>
                 </Card.Text>
-                <Card.Text>
-                  {q.case2.text}
+                <Card.Text className="d-flex justify-content-between" style={rowstyle}>
+                  <div className="pr-4 d-flex">
+                    <div style={{width: '100px', fontWeight: 'bold', display: 'inline-block'}}>{q.case2.votes} Votes</div>
+                    <div>&bull; {q.case2.text}</div>
+                  </div>
+                  <Button primary>
+                    Vote
+                  </Button>
                 </Card.Text>
               </Card.Body>
               <Card.Footer className="d-flex">
-                <Card.Text><i className="secondary">Posted</i> <strong>8:45am 9/25/2019</strong> <i>by</i> <strong>Ben</strong></Card.Text>
+                <Card.Text><i className="secondary">Posted</i> <strong>{q.date} at {q.time}</strong> <i>by</i> <strong>{q.author}</strong></Card.Text>
               </Card.Footer>
           </Card>
         ))}

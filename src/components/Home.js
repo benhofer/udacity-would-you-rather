@@ -69,7 +69,7 @@ const Home = (props) => {
                 <input onKeyUp={handleCase1KeyUp} type="text" className="form-control" id="case1Input" placeholder="Case 1" />
               </div>            
               <div className="form-group">
-                <label for="case1Input" style={{textAlign: 'center', width: '100%'}}>OR</label>
+                <label for="case2Input" style={{textAlign: 'center', width: '100%'}}>OR</label>
                 <input onKeyUp={handleCase2KeyUp} type="text" className="form-control" id="case2Input" placeholder="Case 2" />
               </div> 
               <h2 style={{textAlign: 'center', margin: '0 auto', width: '40px', height: '40px', borderRadius: '40px', background: 'black', color: 'white'}}>?</h2>

@@ -12,10 +12,6 @@ import {
       {
         questionid: 1,
         vote: 'case2'
-      },
-      {
-        questionid: 2,
-        vote: 'case1'
       }
     ]
   },{
@@ -26,10 +22,6 @@ import {
       {
         questionid: 1,
         vote: 'case2'
-      },
-      {
-        questionid: 2,
-        vote: 'case1'
       }
     ]
   },{
@@ -38,7 +30,7 @@ import {
     active: false,
     votes: [
       {
-        questionid: 2,
+        questionid: 1,
         vote: 'case1'
       }
     ]
