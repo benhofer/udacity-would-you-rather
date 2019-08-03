@@ -8,25 +8,26 @@ const Leaderboard = (props) => {
     <div className="p-3" style={{maxWidth: '800px', margin: '0 auto'}}>
       { 
         props.questions.map((q) => (
+
             <Card className="mb-4">
               <Card.Header>{q.description}</Card.Header>
               <Card.Body>
                 <Card.Title className="border-bottom pb-2 text-center">Would You Rather...</Card.Title>
                 <Card.Text className="d-flex justify-content-between border-bottom pb-2" style={rowstyle}>
                   <div className="pr-4 d-flex">
-                    <div style={{width: '100px', fontWeight: 'bold', display: 'inline-block'}}>{q.case1.votes} Votes</div>
+                    <div style={{width: '100px', fontWeight: 'bold', display: 'inline-block'}}>{q.case1.numvotes} Votes</div>
                     <div>&bull; {q.case1.text}</div>
                   </div>
-                  <Button primary>
+                  <Button onClick={() => props.vote(q.id, props.users.activeuser, 'case1')} primary>
                     Vote
                   </Button>
                 </Card.Text>
                 <Card.Text className="d-flex justify-content-between" style={rowstyle}>
                   <div className="pr-4 d-flex">
-                    <div style={{width: '100px', fontWeight: 'bold', display: 'inline-block'}}>{q.case2.votes} Votes</div>
+                    <div style={{width: '100px', fontWeight: 'bold', display: 'inline-block'}}>{q.case2.numvotes} Votes</div>
                     <div>&bull; {q.case2.text}</div>
                   </div>
-                  <Button primary>
+                  <Button primary onClick={() => props.vote(q.id, props.users.activeuser, 'case2')}>
                     Vote
                   </Button>
                 </Card.Text>

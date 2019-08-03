@@ -10,11 +10,13 @@ const initialState = [{
   author: 'Ben',
   case1: {
     text: 'Have a pizza with pepperoni and mushrooms',
-    votes: 4
+    numvotes: 4,
+    votes: ['Ben', 'Julie', 'Lauren', 'Kate']
   },
   case2: {
     text: 'Have a pizza with ham and pineapple',
-    votes: 8
+    numvotes: 8,
+    votes: ['Ben', 'Julie', 'Lauren', 'Kate', 'Winter', 'Jim', 'Oswald', 'John']
   },
   time: '9:34pm',
   date: '9/23/2019'
@@ -32,11 +34,13 @@ export default function questions(state = initialState, action) {
         author: action.author,
         case1: {
           text: action.case1,
-          votes: 0
+          numvotes: 0,
+          votes: []
         },
         case2: {
           text: action.case2,
-          votes: 0
+          numvotes: 0,
+          votes: []
         }
       }
       return [...state, newquestion];
@@ -46,8 +50,20 @@ export default function questions(state = initialState, action) {
       return 'test';
 
     case VOTE: 
+      let newstate = state.filter((q) => q.id !== action.id);
+      let newquestionstate = state.filter((q) => q.id === action.id)
       
-      return 'test';
+      switch (action.vote) {
+        case 'case1': 
+          newquestionstate[0].case1.numvotes++;
+          newquestionstate[0].case1.votes.push(action.user);
+          break;
+        case 'case2': 
+          newquestionstate[0].case2.numvotes++;
+          newquestionstate[0].case2.votes.push(action.user);
+      }
+
+      return [...newstate, ...newquestionstate];
 
     default: return state;
   }
