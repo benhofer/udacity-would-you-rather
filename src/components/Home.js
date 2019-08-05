@@ -7,6 +7,16 @@ const Home = (props) => {
   const [title, setTitle] = useState(undefined);
   const [case1, setCase1] = useState(undefined);
   const [case2, setCase2] = useState(undefined);
+  const [showunanswered, setShowUnanswered] = useState(true);
+  const [showanswered, setShowAnswered] = useState(true);
+
+  const handleAnsweredClick = () => {
+    setShowAnswered(!showanswered)
+  }
+
+  const handleUnansweredClick = () => {
+    setShowUnanswered(!showunanswered)
+  }
 
   const handleTitleKeyUp = (e) => {
     const val = e.target.value;
@@ -33,11 +43,11 @@ const Home = (props) => {
           <Form.Group>
             <div className="d-flex flex-row-reverse">
               <Form.Check className="pr-4">
-                <Form.CheckInput type="checkbox" id="unansweredcheck" />
+                <Form.CheckInput checked={showunanswered} onClick={handleUnansweredClick} type="checkbox" id="unansweredcheck" />
                 <Form.CheckLabel htmlFor="unansweredcheck">Unanswered</Form.CheckLabel>
               </Form.Check>
               <Form.Check className="pr-4">
-                <Form.CheckInput type="checkbox" id="answeredcheck" />
+                <Form.CheckInput checked={showanswered} onClick={handleAnsweredClick} type="checkbox" id="answeredcheck" />
                 <Form.CheckLabel htmlFor="answeredcheck">Answered</Form.CheckLabel>
               </Form.Check>
             </div>
@@ -45,7 +55,7 @@ const Home = (props) => {
         </Form>
       </div>
       
-      <QuestionsSummaryList questions={props.questions} users={props.users} vote={props.vote} />
+      <QuestionsSummaryList questions={props.questions} users={props.users} vote={props.vote} showanswered={showanswered} showunanswered={showunanswered} />
 
       {/* Modal */}
       <Modal id="newQuestionModal" fade>

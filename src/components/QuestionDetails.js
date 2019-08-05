@@ -6,9 +6,7 @@ const QuestionDetails = (props) => {
   const handleVote = (whichcase) => {
     props.vote(props.q[0].id, props.users.activeuser, whichcase)
   }
-  console.log(props.users.users);
   const thisuser = props.users.users.filter((u) => u.username === props.users.activeuser);
-  console.log(thisuser);
 
   return (
       <div className="p-3" style={{maxWidth: '800px', margin: '0 auto'}}>
