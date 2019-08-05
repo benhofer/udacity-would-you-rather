@@ -5,7 +5,8 @@ import LoginContainer from '../containers/LoginContainer.js';
 const Login = () => {
   
   return (
-    <div className="p-3">
+    <div className="p-3" style={{maxWidth: '800px', margin: '100px auto'}}>
+      <h1>Would You Rather App</h1>
       <Card>
         <Card.Body>
           <Card.Title>Login</Card.Title>

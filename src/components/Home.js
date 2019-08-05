@@ -27,7 +27,7 @@ const Home = (props) => {
 
   return (
     <div className="p-3">
-      <div className="d-flex pb-4 justify-content-between">
+      <div className="d-flex pb-4 justify-content-between" style={{maxWidth: '800px', margin: '0 auto'}}>
         <Button primary data-toggle="modal" data-target="#newQuestionModal">New Question</Button>
         <Form>
           <Form.Group>
@@ -45,7 +45,7 @@ const Home = (props) => {
         </Form>
       </div>
       
-      <QuestionsSummaryList questions={props.questions} />
+      <QuestionsSummaryList questions={props.questions} users={props.users} vote={props.vote} />
 
       {/* Modal */}
       <Modal id="newQuestionModal" fade>

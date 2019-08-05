@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Button, Modal  } from 'bootstrap-4-react';
+import { Card, Button } from 'bootstrap-4-react';
 
 
 const Leaderboard = (props) => {  
@@ -8,7 +8,7 @@ const Leaderboard = (props) => {
     <div className="p-3" style={{maxWidth: '800px', margin: '0 auto'}}>
       { 
         props.questions.map((q) => (
-
+          
             <Card className="mb-4">
               <Card.Header>{q.description}</Card.Header>
               <Card.Body>

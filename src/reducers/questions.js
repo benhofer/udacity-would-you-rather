@@ -1,11 +1,10 @@
 import {
  ADD_QUESTION, 
- ANSWER_QUESTION,
  VOTE
 } from '../constants/constants'
 
 const initialState = [{
-  id: 1,
+  id: 123456789,
   description: 'Pizza Toppings',
   author: 'Ben',
   case1: {
@@ -44,10 +43,6 @@ export default function questions(state = initialState, action) {
         }
       }
       return [...state, newquestion];
-
-    case ANSWER_QUESTION: 
-      
-      return 'test';
 
     case VOTE: 
       let newstate = state.filter((q) => q.id !== action.id);

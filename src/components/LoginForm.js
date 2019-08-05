@@ -13,9 +13,8 @@ const LoginForm = (props) => {
         <label htmlFor="selectUser">Example select</label>
         <Form.Select id="selectUser" className="mb-2">
           <option>Ben</option>
-          <option>Lauren</option>
-          <option>Kate</option>
           <option>Julie</option>
+          <option>Jeremy</option>
           <option>John</option>
         </Form.Select>
         <Link className="btn btn-primary" to="/app" onClick={handleSignIn}>Sign In</Link>
