@@ -1,5 +1,7 @@
 import {
-  LOGIN
+  LOGIN,
+  VOTE, 
+  ADD_QUESTION
  } from '../constants/constants'
  
  const initialState = {
@@ -9,6 +11,8 @@ import {
     username: 'Ben',
     active: false,
     avatar: 'ben.png',
+    numvotes: 1,
+    numquestions: 0,
     votes: [
       {
         questionid: 123456789,
@@ -20,6 +24,8 @@ import {
     username: 'Julie',
     active: false,
     avatar: 'julie.png',
+    numvotes: 1,
+    numquestions: 0, 
     votes: [
       {
         questionid: 123456789,
@@ -32,23 +38,17 @@ import {
     username: 'Jeremy',
     active: false,
     avatar: 'jeremy.png',
-    votes: [
-      {
-        questionid: 123456789,
-        vote: 'case2'
-      }
-    ]
+    numvotes: 0,
+    numquestions: 0,
+    votes: []
   },{
     id: 4,
     username: 'John',
     avatar: 'john.png',
     active: false,
-    votes: [
-      {
-        questionid: 123456789,
-        vote: 'case2'
-      }
-    ]
+    numvotes: 0,
+    numquestions: 0,
+    votes: []
   }]};
  
  let newstate;
@@ -58,19 +58,34 @@ import {
  export default function users(state = initialState, action) {
    switch (action.type) {
 
-    case 'LOGIN':
-      newstate = initialState;
+    case LOGIN:
+      newstate = state;
       newstate.activeuser = action.username;
       return newstate;
- 
-    case 'VOTE': 
-      newstate = initialState;
+    
+    case ADD_QUESTION: 
+      newstate = state;
+      newuser = newstate.users.filter((u) => action.author === u.username);
+      newstateusers = newstate.users.filter((u) => action.author !== u.username);
+      newuser[0].numquestions++;
+
+      return {
+        activeuser: newstate.activeuser,
+        users: [
+          newuser[0],
+          ...newstateusers
+        ]  
+      }
+
+    case VOTE: 
+      newstate = state;
       newuser = newstate.users.filter((u) => action.user === u.username);
       newstateusers = newstate.users.filter((u) => action.user !== u.username);
       newuser[0].votes.push({questionid: action.id, vote: action.vote});
+      newuser[0].numvotes++;
 
       return {
-        activeuser: initialState.activeuser,
+        activeuser: newstate.activeuser,
         users: [
           newuser[0],
           ...newstateusers
