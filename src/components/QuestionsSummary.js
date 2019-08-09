@@ -4,8 +4,14 @@ import { Link } from "react-router-dom";
 
 const QuestionsSummaryList = (props) => {
 
-  const thisuser = props.users.users.filter((u) => u.username === props.users.activeuser)[0];
-  console.log(thisuser);
+  let thisuser = '';
+
+  if (props.users.activeuser) {
+    thisuser = props.users.users.filter((u) => u.username === props.users.activeuser)[0];
+  } else {
+    // Simulate an HTTP redirect:
+    window.location.replace("http://localhost:3000/");
+  }
 
   const card = (q) => (
     <Card className="mb-4" key={q.id}>

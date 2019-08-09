@@ -1,10 +1,10 @@
 import React from 'react';
-import { Card, Button } from 'bootstrap-4-react';
+import { Card } from 'bootstrap-4-react';
 
 
 const Leaderboard = (props) => {  
   const rowstyle = {fontSize: '18px', lineHeight: 1.5};
-  const [ users, questions ] = [ props.users.users, props.questions ]; 
+  const [ users ] = [ props.users.users, props.questions ]; 
 
   return (
     <div className="p-3" style={{maxWidth: '800px', margin: '0 auto'}}>

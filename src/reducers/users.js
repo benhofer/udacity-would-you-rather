@@ -5,7 +5,7 @@ import {
  } from '../constants/constants'
  
  const initialState = {
-   activeuser: 'Ben',
+   activeuser: '',
    users: [{
     id: 1,
     username: 'Ben',
