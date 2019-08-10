@@ -11,27 +11,17 @@ import {
     username: 'Ben',
     active: false,
     avatar: 'ben.png',
-    numvotes: 1,
+    numvotes: 0,
     numquestions: 0,
-    votes: [
-      {
-        questionid: 123456789,
-        vote: 'case2'
-      }
-    ]
+    votes: []
   },{
     id: 2,
     username: 'Julie',
     active: false,
     avatar: 'julie.png',
-    numvotes: 1,
+    numvotes: 0,
     numquestions: 0, 
-    votes: [
-      {
-        questionid: 123456789,
-        vote: 'case2'
-      }
-    ]
+    votes: []
   },
   {
     id: 3,
@@ -69,6 +59,9 @@ import {
       newstateusers = newstate.users.filter((u) => action.author !== u.username);
       newuser[0].numquestions++;
 
+      console.log('questions asked');
+      console.log(newuser[0].numquestions);
+
       return {
         activeuser: newstate.activeuser,
         users: [
@@ -83,6 +76,9 @@ import {
       newstateusers = newstate.users.filter((u) => action.user !== u.username);
       newuser[0].votes.push({questionid: action.id, vote: action.vote});
       newuser[0].numvotes++;
+
+      console.log('votes');
+      console.log(newuser[0].numvotes);
 
       return {
         activeuser: newstate.activeuser,

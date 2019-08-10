@@ -3,22 +3,7 @@ import {
  VOTE
 } from '../constants/constants'
 
-const initialState = [{
-  id: 123456789,
-  description: 'Pizza Toppings',
-  author: 'Ben',
-  case1: {
-    text: 'Have a pizza with pepperoni and mushrooms',
-    numvotes: 4,
-    votes: ['Ben', 'Julie', 'Lauren', 'Kate']
-  },
-  case2: {
-    text: 'Have a pizza with ham and pineapple',
-    numvotes: 8,
-    votes: ['Ben', 'Julie', 'Lauren', 'Kate', 'Winter', 'Jim', 'Oswald', 'John']
-  },
-  time: 'Sat Aug 10 2019 07:50:47 GMT-0400 (Eastern Daylight Time)'
-}]
+const initialState = [];
 
 export default function questions(state = initialState, action) {
 
@@ -29,6 +14,7 @@ export default function questions(state = initialState, action) {
         id: action.id,
         description: action.title,
         time: new Date().toString(),
+        utctime: (new Date).getTime(), 
         author: action.author,
         case1: {
           text: action.case1,

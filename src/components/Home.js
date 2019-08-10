@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Modal, Form } from 'bootstrap-4-react';
+import Bootstrap, { Button, Modal, Form } from 'bootstrap-4-react';
 import QuestionsSummaryList from './QuestionsSummary';
 
 const Home = (props) => {
@@ -35,6 +35,10 @@ const Home = (props) => {
     props.addQuestion(new Date().getTime(), title, case1, case2, props.users.activeuser);
   }
 
+  const handleAskQuestion = () => {
+    Bootstrap.modal('#newQuestionModal');
+  }
+
   return (
     <div className="p-3">
       <div className="d-flex pb-4 justify-content-between" style={{maxWidth: '800px', margin: '0 auto'}}>
@@ -55,7 +59,7 @@ const Home = (props) => {
         </Form>
       </div>
       
-      <QuestionsSummaryList questions={props.questions} users={props.users} vote={props.vote} showanswered={showanswered} showunanswered={showunanswered} />
+      <QuestionsSummaryList handleAskQuestion={() => handleAskQuestion()} questions={props.questions} users={props.users} vote={props.vote} showanswered={showanswered} showunanswered={showunanswered} />
 
       {/* Modal */}
       <Modal id="newQuestionModal" fade>

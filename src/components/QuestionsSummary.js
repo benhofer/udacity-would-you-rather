@@ -1,5 +1,5 @@
 import React, {Fragment} from 'react';
-import { Card } from 'bootstrap-4-react';
+import Bootstrap, { Card } from 'bootstrap-4-react';
 import { Link } from "react-router-dom";
 
 const QuestionsSummaryList = (props) => {
@@ -13,7 +13,6 @@ const QuestionsSummaryList = (props) => {
     window.location.replace("http://localhost:3000/");
   }
 
-
   const card = (q, authoruser) => (
     <Card className="mb-4" key={q.id}>
       <Card.Header>
@@ -26,25 +25,47 @@ const QuestionsSummaryList = (props) => {
     </Card>
   )
 
+  let questions = props.questions.map((q) => {
+            
+    const authoruser = props.users.users.filter((u) => u.username === q.author)[0];
+     
+    return (
+     <div key={q.id}>
+       {
+         props.showanswered && 
+           (thisuser.votes.filter((vote) => vote.questionid === q.id).length !== 0 ? card(q, authoruser) : '')
+       }{
+         props.showunanswered && 
+           (thisuser.votes.filter((vote) => vote.questionid === q.id).length === 0 ? card(q, authoruser) : '')
+       }
+     </div>
+   )})
+
+  questions = questions.sort((a, b) => (b.key - a.key));
+
+  const handleAskQuestion = () => {
+    console.log(Bootstrap);
+  }
+
   return (
     <Fragment>
       <div className="p-3" style={{maxWidth: '800px', margin: '0 auto'}}>
-        { 
-          props.questions.map((q) => {
-            
-           const authoruser = props.users.users.filter((u) => u.username === q.author)[0];
-            
-           return (
-            <div>
-              {
-                props.showanswered && 
-                  (thisuser.votes.filter((vote) => vote.questionid === q.id).length !== 0 ? card(q, authoruser) : '')
-              }{
-                props.showunanswered && 
-                  (thisuser.votes.filter((vote) => vote.questionid === q.id).length === 0 ? card(q, authoruser) : '')
-              }
-            </div>
-        )})}
+
+        { questions.length > 0 && questions }
+        { questions.length === 0 &&
+        
+          <Card>
+            <Card.Header>Nobody has created any questions yet.</Card.Header>
+            <Card.Body>
+              <Card.Text>
+                <span style={{color: '#007bff', cursor: 'pointer'}} onClick={() => props.handleAskQuestion()}>Ask a Question!</span>
+              </Card.Text>
+            </Card.Body>
+
+          </Card>
+        }
+
+
       </div>
     </Fragment>
   )
