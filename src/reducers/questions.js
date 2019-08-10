@@ -17,8 +17,7 @@ const initialState = [{
     numvotes: 8,
     votes: ['Ben', 'Julie', 'Lauren', 'Kate', 'Winter', 'Jim', 'Oswald', 'John']
   },
-  time: '9:34pm',
-  date: '9/23/2019'
+  time: 'Sat Aug 10 2019 07:50:47 GMT-0400 (Eastern Daylight Time)'
 }]
 
 export default function questions(state = initialState, action) {
@@ -29,7 +28,7 @@ export default function questions(state = initialState, action) {
       let newquestion = {
         id: action.id,
         description: action.title,
-        time: new Date().getTime(),
+        time: new Date().toString(),
         author: action.author,
         case1: {
           text: action.case1,

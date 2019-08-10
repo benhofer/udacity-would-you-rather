@@ -12,11 +12,11 @@ const QuestionDetails = (props) => {
       <div className="p-3" style={{maxWidth: '800px', margin: '0 auto'}}>
         {props.q.map((q) => {
           const voted = thisuser[0].votes.filter((question) => question.questionid === q.id).length > 0;
+          const authoruser = props.users.users.filter((u) => u.username === q.author);
           let vote;
           if (voted) {
             vote = thisuser[0].votes.filter((question) => question.questionid === q.id)[0].vote;
           }
-          console.log(vote);
           return ( 
           <Card className="mb-4" key={q.id}>
             <Card.Header>
@@ -72,7 +72,11 @@ const QuestionDetails = (props) => {
               </Card.Text>
             </Card.Body>
             <Card.Footer className="d-flex">
-              <Card.Text><i className="secondary">Posted</i> <strong>{q.date} at {q.time}</strong> <i>by</i> <strong>{q.author}</strong></Card.Text>
+              <Card.Text>
+                {
+                  console.log(authoruser)
+                }
+              <img src={`/images/${authoruser[0].avatar}`} width="50px"></img> <strong>{q.author}</strong> <i className="secondary">posted </i> <strong>{q.time}</strong></Card.Text>
             </Card.Footer>
           </Card>
         )})}
