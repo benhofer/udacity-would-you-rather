@@ -7,7 +7,7 @@ const QuestionsSummaryList = (props) => {
   let thisuser = '';
 
   if (props.users.activeuser) {
-    thisuser = props.users.users.filter((u) => u.username === props.users.activeuser)[0];
+    thisuser = props.users.users.filter((u) => u.name === props.users.activeuser)[0];
   } else {
     // Simulate an HTTP redirect:
     window.location.replace("http://localhost:3000/");
@@ -15,28 +15,29 @@ const QuestionsSummaryList = (props) => {
 
   const card = (q, authoruser) => (
     <Card className="mb-4" key={q.id}>
+      {console.log(authoruser)}
       <Card.Header>
       <Link to={`/app/questions/${q.id}`}>{q.description}</Link></Card.Header>
       <Card.Body>
         <Card.Text>
-          <img src={`/images/${authoruser.avatar}`} width="50px"></img> 
+          <img src={`/images/${authoruser.avatar}`} width="50px" className="mr-4"></img> 
           <strong>{q.author}</strong> <i className="secondary">Posted</i> <strong>{q.time}</strong></Card.Text>
       </Card.Body>
     </Card>
   )
 
-  let questions = props.questions.map((q) => {
-            
-    const authoruser = props.users.users.filter((u) => u.username === q.author)[0];
+  let questions = props.questions.map((q) => {    
+
+    const authoruser = props.users.users.filter((u) => u.id === q.author)[0];
      
     return (
      <div key={q.id}>
        {
-         props.showanswered && 
-           (thisuser.votes.filter((vote) => vote.questionid === q.id).length !== 0 ? card(q, authoruser) : '')
+         props.showAnswered && 
+           (thisuser.votes[q.id] ? card(q, authoruser) : '')
        }{
-         props.showunanswered && 
-           (thisuser.votes.filter((vote) => vote.questionid === q.id).length === 0 ? card(q, authoruser) : '')
+         props.showUnanswered && 
+           (thisuser.votes[q.id] ? '' : card(q, authoruser))
        }
      </div>
    )})

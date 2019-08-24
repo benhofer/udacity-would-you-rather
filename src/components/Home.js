@@ -1,21 +1,47 @@
 import React, { useState } from 'react';
 import Bootstrap, { Button, Modal, Form } from 'bootstrap-4-react';
 import QuestionsSummaryList from './QuestionsSummary';
+import Checkbox from './Checkbox';
 
 const Home = (props) => {
 
   const [title, setTitle] = useState(undefined);
   const [case1, setCase1] = useState(undefined);
   const [case2, setCase2] = useState(undefined);
-  const [showunanswered, setShowUnanswered] = useState(true);
-  const [showanswered, setShowAnswered] = useState(true);
+
+  var lsShowAnswered, lsShowUnanswered;
+
+  // console.log('Show Answered')
+  // console.log(localStorage.getItem('showAnswered'))
+  // console.log('Show Unanswered')
+  // console.log(localStorage.getItem('showUnanswered'))
+
+  // if (localStorage.getItem('showAnswered') !== null) {
+  //   lsShowAnswered = localStorage.getItem('showAnswered');
+  // } else {
+  //   lsShowAnswered = false;
+  // }
+  // if (localStorage.getItem('showUnanswered') !== null) {
+  //   lsShowUnanswered = localStorage.getItem('showUnanswered');
+  // } else {
+  //   lsShowUnanswered = true;
+  // }
+
+  const [showAnswered, setShowAnswered] = useState(false);
+  const [showUnanswered, setShowUnanswered] = useState(true);
+
+  const setLsValue = (cbval, setval) => {
+    localStorage.setItem(cbval, setval);
+  }
 
   const handleAnsweredClick = () => {
-    setShowAnswered(!showanswered)
+    showAnswered ? setLsValue('showAnswered', false) : setLsValue('showAnswered', true);
+    setShowAnswered(showAnswered ? false : true);
   }
 
   const handleUnansweredClick = () => {
-    setShowUnanswered(!showunanswered)
+    showUnanswered ? setLsValue('showUnanswered', false) : setLsValue('showUnanswered', true);
+    setShowUnanswered(showUnanswered ? false : true)
   }
 
   const handleTitleKeyUp = (e) => {
@@ -41,31 +67,30 @@ const Home = (props) => {
 
   return (
     <div className="p-3">
-      <div className="d-flex pb-4 justify-content-between" style={{maxWidth: '800px', margin: '0 auto'}}>
+      <div className="d-flex pb-4 justify-content-between" style={{ maxWidth: '800px', margin: '0 auto' }}>
         <Button primary data-toggle="modal" data-target="#newQuestionModal">New Question</Button>
         <Form>
           <Form.Group>
-            <div className="d-flex flex-row-reverse">
-              <Form.Check className="pr-4">
-                <Form.CheckInput checked={showunanswered} onClick={handleUnansweredClick} type="checkbox" id="unansweredcheck" />
-                <Form.CheckLabel htmlFor="unansweredcheck">Unanswered</Form.CheckLabel>
-              </Form.Check>
-              <Form.Check className="pr-4">
-                <Form.CheckInput checked={showanswered} onClick={handleAnsweredClick} type="checkbox" id="answeredcheck" />
-                <Form.CheckLabel htmlFor="answeredcheck">Answered</Form.CheckLabel>
-              </Form.Check>
+            <div className="d-flex">
+
+              <Checkbox label="Unanswered" isSelected={showUnanswered}
+                onCheckboxChange={handleUnansweredClick} />
+
+              <Checkbox label="Answered" isSelected={showAnswered}
+                onCheckboxChange={handleAnsweredClick} />
+
             </div>
           </Form.Group>
         </Form>
       </div>
-      
-      <QuestionsSummaryList handleAskQuestion={() => handleAskQuestion()} questions={props.questions} users={props.users} vote={props.vote} showanswered={showanswered} showunanswered={showunanswered} />
+
+      <QuestionsSummaryList handleAskQuestion={() => handleAskQuestion()} questions={props.questions} users={props.users} vote={props.vote} showAnswered={showAnswered} showUnanswered={showUnanswered} />
 
       {/* Modal */}
       <Modal id="newQuestionModal" fade>
         <Modal.Dialog>
           <Modal.Content>
-            
+
             <Modal.Header>
               <Modal.Title>Add Question</Modal.Title>
               <Modal.Close>
@@ -75,18 +100,18 @@ const Home = (props) => {
 
             <Modal.Body>
               <div className="form-group">
-                <label for="titleInput" style={{width: '100%', textAlign: 'center'}}>Title</label>
+                <label htmlFor="titleInput" style={{ width: '100%', textAlign: 'center' }}>Title</label>
                 <input onKeyUp={handleTitleKeyUp} type="text" className="form-control" id="titleInput" placeholder="Enter title"></input>
               </div>
-              <h2 style={{textAlign: 'center'}}>Would you rather ...</h2>
+              <h2 style={{ textAlign: 'center' }}>Would you rather ...</h2>
               <div className="form-group">
                 <input onKeyUp={handleCase1KeyUp} type="text" className="form-control" id="case1Input" placeholder="Case 1" />
-              </div>            
+              </div>
               <div className="form-group">
-                <label for="case2Input" style={{textAlign: 'center', width: '100%'}}>OR</label>
+                <label htmlFor="case2Input" style={{ textAlign: 'center', width: '100%' }}>OR</label>
                 <input onKeyUp={handleCase2KeyUp} type="text" className="form-control" id="case2Input" placeholder="Case 2" />
-              </div> 
-              <h2 style={{textAlign: 'center', margin: '0 auto', width: '40px', height: '40px', borderRadius: '40px', background: 'black', color: 'white'}}>?</h2>
+              </div>
+              <h2 style={{ textAlign: 'center', margin: '0 auto', width: '40px', height: '40px', borderRadius: '40px', background: 'black', color: 'white' }}>?</h2>
             </Modal.Body>
 
             <Modal.Footer>
@@ -100,5 +125,5 @@ const Home = (props) => {
     </div>
   )
 };
-  
+
 export default Home;

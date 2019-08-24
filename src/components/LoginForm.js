@@ -12,12 +12,14 @@ const LoginForm = (props) => {
     <Form>
         <label htmlFor="selectUser">Example select</label>
         <Form.Select id="selectUser" className="mb-2">
-          <option>Ben</option>
-          <option>Julie</option>
-          <option>Jeremy</option>
-          <option>John</option>
+          <option>Tyler McGinnis</option>
+          <option>Sarah Edo</option>
+          <option>John Doe</option>
         </Form.Select>
-        <Link className="btn btn-primary" to="/app" onClick={handleSignIn}>Sign In</Link>
+        <div>
+          <Link className="btn btn-primary" to="/app" onClick={handleSignIn}>Sign In</Link>
+        </div>
+        <small style={{ float: 'right'}}>User images courtesy of <a target="_blank" href="https://unsplash.com/">Unsplash</a></small>
       </Form>
   )
 }

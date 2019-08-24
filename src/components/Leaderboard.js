@@ -10,7 +10,7 @@ const Leaderboard = (props) => {
     const score = user.numquestions + user.numvotes;
 
     return (
-      <Card key="score" className="mb-4">
+      <Card key={score} className="mb-4">
         <Card.Body className="d-flex">
           <div className="pr-4">
             <img src={`/images/${user.avatar}`} width="150px"></img>
@@ -38,7 +38,7 @@ const Leaderboard = (props) => {
     
   )})
 
-  leaderboard = leaderboard.sort((a,b) => (a.key - b.key));
+  leaderboard = leaderboard.sort((a,b) => (b.key - a.key));
 
   return (
     <div className="p-3" style={{maxWidth: '800px', margin: '0 auto'}}>
