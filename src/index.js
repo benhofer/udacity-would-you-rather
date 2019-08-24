@@ -7,6 +7,6 @@ import reducer from './reducers';
 
 const store = createStore(reducer);
 
-ReactDOM.render( 
-    <Root store={store} />,
+ReactDOM.render(
+  <Root store={store} />,
   document.getElementById('root'));

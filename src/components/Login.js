@@ -7,7 +7,7 @@ const Login = () => {
   localStorage.clear();
 
   return (
-    <div className="p-3" style={{maxWidth: '800px', margin: '100px auto'}}>
+    <div className="p-3" style={{ maxWidth: '800px', margin: '100px auto' }}>
       <h1>Would You Rather App</h1>
       <Card>
         <Card.Body>

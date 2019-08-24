@@ -6,7 +6,7 @@ import { VOTE } from '../constants/constants'
 const mapStateToProps = state => state;
 
 const mapDispatchToProps = dispatch => ({
-  vote: (id, user, vote) => dispatch({ type: VOTE, id, user, vote})
+  vote: (id, user, vote) => dispatch({ type: VOTE, id, user, vote })
 })
 
 const LeaderboardContainer = connect(

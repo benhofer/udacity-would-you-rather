@@ -58,7 +58,7 @@ const Home = (props) => {
   }
 
   const saveQuestion = () => {
-    props.addQuestion(new Date().getTime(), title, case1, case2, props.users.activeuser);
+    props.addQuestion(new Date().getTime(), title, case1, case2, props.users.activeuser.id);
   }
 
   const handleAskQuestion = () => {

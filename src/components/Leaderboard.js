@@ -2,9 +2,9 @@ import React from 'react';
 import { Card } from 'bootstrap-4-react';
 
 
-const Leaderboard = (props) => {  
-  const rowstyle = {fontSize: '18px', lineHeight: 1.5};
-  const [ users ] = [ props.users.users, props.questions ]; 
+const Leaderboard = (props) => {
+  const rowstyle = { fontSize: '18px', lineHeight: 1.5 };
+  const [users] = [props.users.users, props.questions];
 
   let leaderboard = users.map((user) => {
     const score = user.numquestions + user.numvotes;
@@ -35,14 +35,15 @@ const Leaderboard = (props) => {
           </div>
         </Card.Body>
       </Card>
-    
-  )})
 
-  leaderboard = leaderboard.sort((a,b) => (b.key - a.key));
+    )
+  })
+
+  leaderboard = leaderboard.sort((a, b) => (b.key - a.key));
 
   return (
-    <div className="p-3" style={{maxWidth: '800px', margin: '0 auto'}}>
-      { leaderboard }
+    <div className="p-3" style={{ maxWidth: '800px', margin: '0 auto' }}>
+      {leaderboard}
     </div>
   )
 }

@@ -1,13 +1,16 @@
 import {
   LOGIN,
-  VOTE, 
+  VOTE,
   ADD_QUESTION
- } from '../constants/constants'
- 
- const initialState = {
-  activeuser: '',
+} from '../constants/constants'
+
+const initialState = {
+  activeuser: {
+    name: undefined,
+    id: undefined
+  },
   users: [
-   {
+    {
       id: 'sarahedo',
       name: 'Sarah Edo',
       active: false,
@@ -46,38 +49,41 @@ import {
       numvotes: 3,
       numquestions: 2
     }
-  ]};
- 
- let newstate;
- let newuser;
- let newstateusers;
- 
- export default function users(state = initialState, action) {
-   switch (action.type) {
+  ]
+};
+
+let newstate;
+let newuser;
+let newstateusers;
+
+export default function users(state = initialState, action) {
+  switch (action.type) {
 
     case LOGIN:
       newstate = state;
-      newstate.activeuser = action.username;
+      newstate.activeuser.id = action.id;
+      newstate.activeuser.name = action.username;
+      console.log(newstate.activeuser);
       return newstate;
-    
-    case ADD_QUESTION: 
+
+    case ADD_QUESTION:
       newstate = state;
-      newuser = newstate.users.filter((u) => action.author === u.name);
-      newstateusers = newstate.users.filter((u) => action.author !== u.name);
+      newuser = newstate.users.filter((u) => action.author === u.id);
+      newstateusers = newstate.users.filter((u) => action.author !== u.id);
       newuser[0].numquestions++;
 
-      console.log('questions asked');
-      console.log(newuser[0].numquestions);
-
       return {
-        activeuser: newstate.activeuser,
+        activeuser: {
+          name: newstate.activeuser.name,
+          id: newstate.activeuser.id
+        },
         users: [
           newuser[0],
           ...newstateusers
-        ]  
+        ]
       }
 
-    case VOTE: 
+    case VOTE:
       newstate = state;
       newuser = newstate.users.filter((u) => action.user === u.name);
       console.log(newuser);
@@ -86,13 +92,16 @@ import {
       newuser[0].numvotes++;
 
       return {
-        activeuser: newstate.activeuser,
+        activeuser: {
+          name: newstate.activeuser.name,
+          id: newstate.activeuser.id
+        },
         users: [
           newuser[0],
           ...newstateusers
-        ]  
+        ]
       }
-      default: return state;
+    default: return state;
 
-   }
- }
+  }
+}

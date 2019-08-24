@@ -14,7 +14,7 @@ const UserName = (props) => {
   return (
     <div>
       Logged in as {
-        props.users.activeuser
+        props.users.activeuser.name
       }
     </div>
   )
@@ -24,35 +24,35 @@ const UserNameContainer = connect(
   mapStateToProps
 )(UserName);
 
-const App = ({match}, props) => {
+const App = ({ match }, props) => {
   if (props) {
     return (
-        <div>
-          <Navbar expand="lg" light bg="light">
-            <Navbar.Brand href="#">
-              Would You Rather App        
+      <div>
+        <Navbar expand="lg" light bg="light">
+          <Navbar.Brand href="#">
+            Would You Rather App
             </Navbar.Brand>
-            <Navbar.Nav mr="auto">
+          <Navbar.Nav mr="auto">
             <Nav.Item>
-              <Link 
+              <Link
                 className={`${window.location.pathname === ('/app' || '/app/') ? 'active' : ''} nav-link`}
                 to={`${match.url}`}
-                >Home</Link>
+              >Home</Link>
             </Nav.Item>
             <Nav.Item>
-              <Link 
-                className={`${window.location.pathname  === ('/app/leaderboard/' || '/app/leaderboard') ? 'active' : ''} nav-link`}
+              <Link
+                className={`${window.location.pathname === ('/app/leaderboard/' || '/app/leaderboard') ? 'active' : ''} nav-link`}
                 to={`${match.url}/leaderboard/`}
-                >Leaderboard</Link>
+              >Leaderboard</Link>
             </Nav.Item>
             <Nav.Item>
-              <Link 
-                className="nav-link" 
+              <Link
+                className="nav-link"
                 to="/"
-                >Logout</Link>
-            </Nav.Item> 
+              >Logout</Link>
+            </Nav.Item>
           </Navbar.Nav>
-          <UserNameContainer /> 
+          <UserNameContainer />
         </Navbar>
         <Switch>
           <Route path={`${match.path}`} exact component={HomeContainer} />
@@ -65,7 +65,7 @@ const App = ({match}, props) => {
   } else {
     // Simulate an HTTP redirect:
     window.location.replace("http://localhost:3000/");
-  } 
+  }
 }
 
 
