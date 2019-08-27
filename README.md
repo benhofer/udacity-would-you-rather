@@ -8,6 +8,10 @@ This is an assigned project for a React Nanodegree on Udacity.com. It is a simpl
 
 The user avatars are royalty-free photos that were downloaded from unsplash.com. 
 
+## Installing and Setup
+
+To install the project dependencies, run 'npm install'. Then run 'npm start' to start the server.  
+
 ---
 
 ## Available Scripts
