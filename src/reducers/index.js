@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux'
 import questions from './questions'
 import users from './users'
-import filtercb from './filter'
+import authedUser from './authedUser'
 
 const reducer = combineReducers({
-  questions,
+  authedUser,
   users,
-  filtercb
+  questions
 })
 
 export default reducer;

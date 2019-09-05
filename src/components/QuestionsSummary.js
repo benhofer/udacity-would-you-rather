@@ -2,12 +2,12 @@ import React, { Fragment } from 'react';
 import Bootstrap, { Card } from 'bootstrap-4-react';
 import { Link } from "react-router-dom";
 
-const QuestionsSummaryList = (props) => {
+const QuestionsSummary = (props) => {
 
   let thisuser = '';
 
-  if (props.users.activeuser.name) {
-    thisuser = props.users.users.filter((u) => u.name === props.users.activeuser.name)[0];
+  if (props.authedUser && props.authedUser.name) {
+    thisuser = props.users[props.authedUser.name];
   } else {
     // Simulate an HTTP redirect:
     window.location.replace("http://localhost:3000/");
@@ -15,8 +15,6 @@ const QuestionsSummaryList = (props) => {
 
   const card = (q, authoruser) => (
     <Card className="mb-4" key={q.id}>
-      {console.log('authoruser')}
-      {console.log(authoruser)}
       <Card.Header>
         <Link to={`/app/questions/${q.id}`}>{q.description}</Link></Card.Header>
       <Card.Body>
@@ -29,10 +27,10 @@ const QuestionsSummaryList = (props) => {
 
   let questions = props.questions.map((q) => {
 
-    const authoruser = props.users.users.filter((u) => u.id === q.author)[0];
+    const authoruser = props.users[q.author];
 
     return (
-      <div key={q.id}>
+      <div key={q.id} value={q.time}>
         {
           props.showAnswered &&
           (thisuser.votes[q.id] ? card(q, authoruser) : '')
@@ -44,8 +42,7 @@ const QuestionsSummaryList = (props) => {
     )
   })
 
-  questions = questions.sort((a, b) => (b.key - a.key));
-
+  questions = questions.sort((a, b) => (a.key - b.key));
 
   return (
     <Fragment>
@@ -59,10 +56,9 @@ const QuestionsSummaryList = (props) => {
           </Card>
         }
 
-
       </div>
     </Fragment>
   )
 }
 
-export default QuestionsSummaryList
+export default QuestionsSummary

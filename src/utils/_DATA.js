@@ -2,125 +2,150 @@ let users = {
   sarahedo: {
     id: 'sarahedo',
     name: 'Sarah Edo',
+    active: false,
     avatar: 'julie.png',
-    answers: {
-      "8xf0y6ziyjabvozdd253nd": 'optionOne',
-      "6ni6ok3ym7mf1p33lnez": 'optionTwo',
-      "am8ehyc8byjqgar0jgpub9": 'optionTwo',
-      "loxhs1bqm25b708cmbf3g": 'optionTwo'
-    },
-    questions: ['8xf0y6ziyjabvozdd253nd', 'am8ehyc8byjqgar0jgpub9']
+    numvotes: 4,
+    numquestions: 2,
+    votes: {
+      "8xf0y6ziyjabvozdd253nd": 'case1',
+      "6ni6ok3ym7mf1p33lnez": 'case2',
+      "am8ehyc8byjqgar0jgpub9": 'case2',
+      "loxhs1bqm25b708cmbf3g": 'case2'
+    }
   },
   tylermcginnis: {
     id: 'tylermcginnis',
     name: 'Tyler McGinnis',
+    active: false,
     avatar: 'ben.png',
-    answers: {
-      "vthrdm985a262al8qx3do": 'optionOne',
-      "xj352vofupe1dqz9emx13r": 'optionTwo',
+    votes: {
+      "vthrdm985a262al8qx3do": 'case1',
+      "xj352vofupe1dqz9emx13r": 'case2',
     },
-    questions: ['loxhs1bqm25b708cmbf3g', 'vthrdm985a262al8qx3do'],
+    numvotes: 2,
+    numquestions: 2
   },
   johndoe: {
     id: 'johndoe',
     name: 'John Doe',
+    active: false,
     avatar: 'john.png',
-    answers: {
-      "xj352vofupe1dqz9emx13r": 'optionOne',
-      "vthrdm985a262al8qx3do": 'optionTwo',
-      "6ni6ok3ym7mf1p33lnez": 'optionTwo'
+    votes: {
+      "xj352vofupe1dqz9emx13r": 'case1',
+      "vthrdm985a262al8qx3do": 'case2',
+      "6ni6ok3ym7mf1p33lnez": 'case2'
     },
-    questions: ['6ni6ok3ym7mf1p33lnez', 'xj352vofupe1dqz9emx13r'],
+    numvotes: 3,
+    numquestions: 2
   }
 }
 
 let questions = {
-  "8xf0y6ziyjabvozdd253nd": {
+  '8xf0y6ziyjabvozdd253nd': {
     id: '8xf0y6ziyjabvozdd253nd',
     author: 'sarahedo',
-    timestamp: 1467166872634,
-    
-    optionOne: {
+    description: 'Memory',
+    time: new Date().toString(),
+    case1: {
       votes: ['sarahedo'],
+      numvotes: 1,
       text: 'have horrible short term memory',
     },
-    optionTwo: {
+    case2: {
       votes: [],
+      numvotes: 0,
       text: 'have horrible long term memory'
     }
-  },
-  "6ni6ok3ym7mf1p33lnez": {
+  }, 
+  '6ni6ok3ym7mf1p33lnez': {
     id: '6ni6ok3ym7mf1p33lnez',
     author: 'johndoe',
-    timestamp: 1468479767190,
-    optionOne: {
+    description: 'Superheroes',
+    time: new Date().toString(),
+    case1: {
       votes: [],
+      numvotes: 0,
       text: 'become a superhero',
     },
-    optionTwo: {
+    case2: {
       votes: ['johndoe', 'sarahedo'],
+      numvotes: 2,
       text: 'become a supervillain'
     }
-  },
-  "am8ehyc8byjqgar0jgpub9": {
+  }, 
+  'am8ehyc8byjqgar0jgpub9': {
     id: 'am8ehyc8byjqgar0jgpub9',
     author: 'sarahedo',
-    timestamp: 1488579767190,
-    optionOne: {
+    description: 'Super Powers',
+    time: new Date().toString(),
+    case1: {
       votes: [],
+      numvotes: 0,
       text: 'be telekinetic',
     },
-    optionTwo: {
+    case2: {
       votes: ['sarahedo'],
+      numvotes: 1,
       text: 'be telepathic'
     }
   },
-  "loxhs1bqm25b708cmbf3g": {
+  'loxhs1bqm25b708cmbf3g': {
     id: 'loxhs1bqm25b708cmbf3g',
     author: 'tylermcginnis',
-    timestamp: 1482579767190,
-    optionOne: {
+    time: new Date().toString(),
+    description: 'Coding Skills',
+    case1: {
       votes: [],
+      numvotes: 0,
       text: 'be a front-end developer',
     },
-    optionTwo: {
+    case2: {
       votes: ['sarahedo'],
+      numvotes: 1,
       text: 'be a back-end developer'
     }
   },
-  "vthrdm985a262al8qx3do": {
+  'vthrdm985a262al8qx3do': {
     id: 'vthrdm985a262al8qx3do',
     author: 'tylermcginnis',
-    timestamp: 1489579767190,
-    optionOne: {
+    time: new Date().toString(),
+    description: 'Finders Keepers',
+  
+    case1: {
       votes: ['tylermcginnis'],
+      numvotes: 1,
       text: 'find $50 yourself',
     },
-    optionTwo: {
+    case2: {
       votes: ['johndoe'],
+      numvotes: 1,
       text: 'have your best friend find $500'
     }
   },
-  "xj352vofupe1dqz9emx13r": {
+  'xj352vofupe1dqz9emx13r': {
     id: 'xj352vofupe1dqz9emx13r',
     author: 'johndoe',
-    timestamp: 1493579767190,
-    optionOne: {
+    time: new Date().toString(),
+    description: 'Programming Languages',
+    case1: {
       votes: ['johndoe'],
+      numvotes: 1,
       text: 'write JavaScript',
     },
-    optionTwo: {
+    case2: {
       votes: ['tylermcginnis'],
+      numvotes: 1,
       text: 'write Swift'
     }
-  },
+  }
 }
 
-function generateUID() {
+export function generateUID() {
   return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)
 }
 
 export function _getUsers() {
+  
   return new Promise((res, rej) => {
     setTimeout(() => res({ ...users }), 1000)
   })
@@ -151,8 +176,8 @@ function formatQuestion({ optionOneText, optionTwoText, author }) {
 export function _saveQuestion(question) {
   return new Promise((res, rej) => {
     const authedUser = question.author;
-    const formattedQuestion = formatQuestion(question);
-
+    const formattedQuestion = formatQuestion(question); 
+ 
     setTimeout(() => {
       questions = {
         ...questions,
@@ -160,11 +185,7 @@ export function _saveQuestion(question) {
       }
 
       users = {
-        ...users,
-        [authedUser]: {
-          ...users[authedUser],
-          questions: users[authedUser].questions.concat([formattedQuestion.id])
-        }
+        ...users
       }
 
       res(formattedQuestion)

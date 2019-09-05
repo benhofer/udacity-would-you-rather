@@ -1,27 +1,26 @@
 import React from 'react';
 import { Form } from 'bootstrap-4-react';
 import { Link } from 'react-router-dom';
+import { handleInitialData } from '../actions/shared'
 
 const LoginForm = (props) => {
+  handleInitialData();
 
   const handleSignIn = (name) => {
     let id;
-    console.log(name);
-
+    const dispatch = props.dispatch;
     switch (name) {
       case 'Tyler McGinnis':
         id = 'tylermcginnis';
         break;
-
       case 'Sarah Edo':
-        id = 'sarehedo';
+        id = 'sarahedo';
         break;
-
       case 'John Doe':
         id = 'johndoe';
         break;
     }
-    props.loginUser(name, id);
+    dispatch(handleInitialData(id));
   }
 
   return (

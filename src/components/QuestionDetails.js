@@ -8,12 +8,8 @@ const QuestionDetails = (props) => {
     props.vote(props.q[0].id, props.users.activeuser.name, whichcase)
   }
 
-  console.log('props.users.activeuser.name');
-  console.log(props.users.activeuser.name);
-
   if (props.users.activeuser.name) {
     const thisuser = props.users.users.filter((u) => u.name === props.users.activeuser.name)[0]
-
 
     return (
       <div className="p-3" style={{ maxWidth: '800px', margin: '0 auto' }}>

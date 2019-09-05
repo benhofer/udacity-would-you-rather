@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import Bootstrap, { Button, Modal, Form } from 'bootstrap-4-react';
-import QuestionsSummaryList from './QuestionsSummary';
+import QuestionsSummary from './QuestionsSummary';
 import Checkbox from './Checkbox';
+import { saveQuestionAPI } from '../utils/api';
 
 const Home = (props) => {
 
@@ -10,22 +11,6 @@ const Home = (props) => {
   const [case2, setCase2] = useState(undefined);
 
   var lsShowAnswered, lsShowUnanswered;
-
-  // console.log('Show Answered')
-  // console.log(localStorage.getItem('showAnswered'))
-  // console.log('Show Unanswered')
-  // console.log(localStorage.getItem('showUnanswered'))
-
-  // if (localStorage.getItem('showAnswered') !== null) {
-  //   lsShowAnswered = localStorage.getItem('showAnswered');
-  // } else {
-  //   lsShowAnswered = false;
-  // }
-  // if (localStorage.getItem('showUnanswered') !== null) {
-  //   lsShowUnanswered = localStorage.getItem('showUnanswered');
-  // } else {
-  //   lsShowUnanswered = true;
-  // }
 
   const [showAnswered, setShowAnswered] = useState(false);
   const [showUnanswered, setShowUnanswered] = useState(true);
@@ -58,6 +43,24 @@ const Home = (props) => {
   }
 
   const saveQuestion = () => {
+    saveQuestionAPI({
+      id: 'loxhs1bqm25b708cmbf3g',
+      author: 'tylermcginnis',
+      time: new Date().toString(),
+      description: 'Coding Skills',
+      case1: {
+        votes: [],
+        numvotes: 0,
+        text: 'be a front-end developer',
+      },
+      case2: {
+        votes: ['sarahedo'],
+        numvotes: 1,
+        text: 'be a back-end developer'
+      }
+    });
+    console.log('save Question by');
+    console.log(props.users.activeuser.id)
     props.addQuestion(new Date().getTime(), title, case1, case2, props.users.activeuser.id);
   }
 
@@ -84,7 +87,7 @@ const Home = (props) => {
         </Form>
       </div>
 
-      <QuestionsSummaryList handleAskQuestion={() => handleAskQuestion()} questions={props.questions} users={props.users} vote={props.vote} showAnswered={showAnswered} showUnanswered={showUnanswered} />
+      <QuestionsSummary handleAskQuestion={() => handleAskQuestion()} questions={props.questions} users={props.users} vote={props.vote} showAnswered={showAnswered} showUnanswered={showUnanswered} />
 
       {/* Modal */}
       <Modal id="newQuestionModal" fade>
