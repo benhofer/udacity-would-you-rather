@@ -8,7 +8,7 @@ import NoMatch from "./404Page";
 
 class App extends Component {
   render() {
-    if (this.props) {
+    if (this.props && this.props.authedUser) {
       return (
         <div>
           <Navbar expand="lg" light bg="light">
