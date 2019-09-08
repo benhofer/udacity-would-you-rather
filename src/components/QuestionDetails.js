@@ -39,7 +39,7 @@ const QuestionDetails = (props) => {
                         {q.case1.votes.length ? q.case1.votes.length : '0'} Votes
                       </div>
                       <div>
-                        <small>{((q.case1.numvotes * 100) / (q.case1.numvotes + q.case2.numvotes)).toFixed(1)}%</small>
+                        <small>{q.case1.numvotes ? ((q.case1.numvotes * 100) / (q.case1.numvotes + q.case2.numvotes)).toFixed(1) : 0 }% </small>
                       </div>
                     </div>
                     <div>&bull; {q.case1.text}</div>
@@ -55,12 +55,12 @@ const QuestionDetails = (props) => {
                       </Button>
                   }
                 </div>
-                <div className="d-flex justify-content-between" style={rowstyle}>
+                <div className="d-flex justify-content-between pt-2" style={rowstyle}>
                   <div className="pr-4 d-flex">
                     <div style={{ width: '100px', fontWeight: 'bold', display: 'inline-block' }}>
                       <div>{q.case2.numvotes} Votes</div>
                       <div>
-                        <small>{((q.case2.numvotes * 100) / (q.case1.numvotes + q.case2.numvotes)).toFixed(1)}%</small>
+                        <small>{q.case2.numvotes ? ((q.case2.numvotes * 100) / (q.case1.numvotes + q.case2.numvotes)).toFixed(1) : 0 }% </small>
                       </div>
                     </div>
                     <div>

@@ -1,14 +1,8 @@
 import {
-  LOGIN,
   VOTE,
   ADD_QUESTION,
   RECEIVE_USERS
 } from '../constants/constants'
-import { getInitialData } from '../utils/api'
-
-let newstate;
-let newuser;
-let newstateusers;
 
 export default function users(state = {}, action) {
   switch (action.type) {
@@ -18,12 +12,6 @@ export default function users(state = {}, action) {
         ...state,
         ...action.users,
       }
-
-    case LOGIN:
-      newstate = state;
-      newstate.activeuser.id = action.id;
-      newstate.activeuser.name = action.username;
-      return newstate;
 
     case ADD_QUESTION:
       return {

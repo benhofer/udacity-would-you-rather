@@ -31,8 +31,6 @@ const QuestionsSummary = (props) => {
 
     return (
       <div key={q.ts} value={q.time}>
-        { console.log('timestamp') }
-        { console.log(q.ts) }
         {
           props.showAnswered &&
           (thisuser.votes[q.id] ? card(q, authoruser) : '')
