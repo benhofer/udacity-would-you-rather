@@ -1,14 +1,14 @@
 import React from 'react';
-import { Form } from 'bootstrap-4-react';
-import { Link } from 'react-router-dom';
-import { handleInitialData } from '../actions/shared'
+import { Form, Card } from 'bootstrap-4-react';
+
 
 const LoginForm = (props) => {
-  handleInitialData();
+  const addHistory = () => {
+    props.history.push('/app');
+  }
 
   const handleSignIn = (name) => {
     let id;
-    const dispatch = props.dispatch;
     switch (name) {
       case 'Tyler McGinnis':
         id = 'tylermcginnis';
@@ -20,23 +20,31 @@ const LoginForm = (props) => {
         id = 'johndoe';
         break;
     }
-    dispatch(handleInitialData(id));
+    props.getData(id, addHistory);
   }
 
   return (
-    <Form>
-      <label htmlFor="selectUser">Example select</label>
-      <Form.Select id="selectUser" className="mb-2">
-        <option>Tyler McGinnis</option>
-        <option>Sarah Edo</option>
-        <option>John Doe</option>
-      </Form.Select>
-      <div>
-        <Link className="btn btn-primary" to="/app" onClick={() => handleSignIn(document.getElementById('selectUser').value)}>Sign In</Link>
+      <div className="p-3" style={{ maxWidth: '800px', margin: '100px auto' }}>
+        <h1>Would You Rather App</h1>
+        <Card>
+          <Card.Body>
+            <Card.Title>Login</Card.Title>
+            <Form>
+              <label htmlFor="selectUser">Example select</label>
+              <Form.Select id="selectUser" className="mb-2">
+                <option>Tyler McGinnis</option>
+                <option>Sarah Edo</option>
+                <option>John Doe</option>
+              </Form.Select>
+              <div>
+                <span className="btn btn-primary" to="/app" onClick={() => handleSignIn(document.getElementById('selectUser').value)}>Sign In</span>
+              </div>
+              <small style={{ float: 'right' }}>User images courtesy of <a target="_blank" href="https://unsplash.com/">Unsplash</a></small>
+            </Form>        
+          </Card.Body>
+        </Card>
       </div>
-      <small style={{ float: 'right' }}>User images courtesy of <a target="_blank" href="https://unsplash.com/">Unsplash</a></small>
-    </Form>
-  )
-}
+    )
+  }
 
 export default LoginForm;

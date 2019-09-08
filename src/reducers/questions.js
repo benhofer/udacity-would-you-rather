@@ -1,6 +1,7 @@
 import {
   ADD_QUESTION,
-  VOTE
+  VOTE,
+  RECEIVE_QUESTIONS
 } from '../constants/constants';
 import { getInitialData } from '../utils/api'
 
@@ -14,11 +15,19 @@ export default function questions(state = initialState, action) {
 
   switch (action.type) {
 
+    case RECEIVE_QUESTIONS: 
+      return {
+        ...state,
+        ...action.questions,
+      }
+
     case ADD_QUESTION:
       let newquestion = {
         id: action.id,
         description: action.title,
-        time: new Date().toString(),
+        date: new Date().toLocaleDateString(),
+        time: new Date().toLocaleTimeString(),
+        ts: Date.now(),
         author: action.author,
         case1: {
           text: action.case1,
@@ -31,26 +40,26 @@ export default function questions(state = initialState, action) {
           votes: []
         }
       }
-      // _saveQuestion(newquestion);
-      return [...state, newquestion];
-
-    case VOTE:
-      let newstate = state.filter((q) => q.id !== action.id);
-      let newquestionstate = state.filter((q) => q.id === action.id)
-
-      switch (action.vote) {
-        case 'case1':
-          newquestionstate[0].case1.numvotes++;
-          newquestionstate[0].case1.votes.push(action.user);
-          break;
-        case 'case2':
-          newquestionstate[0].case2.numvotes++;
-          newquestionstate[0].case2.votes.push(action.user);
+      return {
+        ...state, 
+        [action.id]: newquestion
       }
 
-      // _saveQuestionAnswer(action.user, action.id, action.vote);
-
-      return [...newstate, ...newquestionstate];
+    case VOTE:
+     return {
+       ...state,
+       [action.id] : {
+          ...state[action.id],
+          [action.vote]: {
+            ...state[action.id][action.vote],
+            votes: [
+              ...state[action.id][action.vote].votes, 
+              action.user
+            ],
+            numvotes: state[action.id][action.vote].numvotes+1
+          }
+       }
+     }
 
     default: return state;
   }

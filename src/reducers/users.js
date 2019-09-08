@@ -1,7 +1,8 @@
 import {
   LOGIN,
   VOTE,
-  ADD_QUESTION
+  ADD_QUESTION,
+  RECEIVE_USERS
 } from '../constants/constants'
 import { getInitialData } from '../utils/api'
 
@@ -11,6 +12,12 @@ let newstateusers;
 
 export default function users(state = {}, action) {
   switch (action.type) {
+    
+    case RECEIVE_USERS :
+      return {
+        ...state,
+        ...action.users,
+      }
 
     case LOGIN:
       newstate = state;
@@ -19,40 +26,25 @@ export default function users(state = {}, action) {
       return newstate;
 
     case ADD_QUESTION:
-      newstate = state;
-      newuser = newstate.users.filter((u) => (action.author === u.id))[0];
-      newstateusers = newstate.users.filter((u) => action.author !== u.id);
-
-      newuser.numquestions++;
-
       return {
-        activeuser: {
-          name: newstate.activeuser.name,
-          id: newstate.activeuser.id
-        },
-        users: [
-          newuser,
-          ...newstateusers
-        ]
+        ...state,
+        numquestions: state.numquestions + 1
       }
 
     case VOTE:
-      newstate = state;
-      newuser = newstate.users.filter((u) => action.user === u.name);
-      newstateusers = newstate.users.filter((u) => action.user !== u.name);
-      newuser[0].votes[action.id] = action.vote;
-      newuser[0].numvotes++;
-
+      console.log(action);
       return {
-        activeuser: {
-          name: newstate.activeuser.name,
-          id: newstate.activeuser.id
-        },
-        users: [
-          newuser[0],
-          ...newstateusers
-        ]
+        ...state,
+        [action.user] : {
+          ...state[action.user],
+          numvotes: state[action.user].numvotes+1,
+          votes: {
+            ...state[action.user].votes,
+            [action.id]: action.vote
+          },
+        }
       }
+
     default: return state;
 
   }

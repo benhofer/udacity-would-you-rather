@@ -1,13 +1,13 @@
 import React, { Fragment } from 'react';
-import Bootstrap, { Card } from 'bootstrap-4-react';
+import { Card } from 'bootstrap-4-react';
 import { Link } from "react-router-dom";
 
 const QuestionsSummary = (props) => {
 
   let thisuser = '';
 
-  if (props.authedUser && props.authedUser.name) {
-    thisuser = props.users[props.authedUser.name];
+  if (props.authedUser) {
+    thisuser = props.users[props.authedUser];
   } else {
     // Simulate an HTTP redirect:
     window.location.replace("http://localhost:3000/");
@@ -20,17 +20,19 @@ const QuestionsSummary = (props) => {
       <Card.Body>
         <Card.Text>
           <img src={`/images/${authoruser.avatar}`} width="50px" className="mr-4"></img>
-          <strong>{q.author}</strong> <i className="secondary">Posted</i> <strong>{q.time}</strong></Card.Text>
+          <strong>{q.author}</strong> <i className="secondary">Posted</i> <strong>{q.date}</strong> <i> at </i> <strong>{q.time}</strong></Card.Text>
       </Card.Body>
     </Card>
   )
 
-  let questions = props.questions.map((q) => {
+  let questions = Object.values(props.questions).map((q) => {
 
     const authoruser = props.users[q.author];
 
     return (
-      <div key={q.id} value={q.time}>
+      <div key={q.ts} value={q.time}>
+        { console.log('timestamp') }
+        { console.log(q.ts) }
         {
           props.showAnswered &&
           (thisuser.votes[q.id] ? card(q, authoruser) : '')
@@ -42,7 +44,7 @@ const QuestionsSummary = (props) => {
     )
   })
 
-  questions = questions.sort((a, b) => (a.key - b.key));
+  questions = questions.sort((a, b) => (b.key - a.key));
 
   return (
     <Fragment>

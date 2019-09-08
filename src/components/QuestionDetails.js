@@ -5,23 +5,25 @@ import NoMatch from './404Page';
 const QuestionDetails = (props) => {
   const rowstyle = { fontSize: '18px', lineHeight: 1.5 }
   const handleVote = (whichcase) => {
-    props.vote(props.q[0].id, props.users.activeuser.name, whichcase)
+    props.vote(props.q[0].id, props.authedUser, whichcase)
   }
 
-  if (props.users.activeuser.name) {
-    const thisuser = props.users.users.filter((u) => u.name === props.users.activeuser.name)[0]
+  if (props.authedUser) {
+    const thisuser = props.authedUser;
 
     return (
       <div className="p-3" style={{ maxWidth: '800px', margin: '0 auto' }}>
         {
           props.q.length === 0 && <NoMatch />
         }
+    
         {props.q.length === 1 && props.q.map((q) => {
-          const voted = thisuser.votes[q.id];
-          const authoruser = props.users.users.filter((u) => u.name === q.author);
+          const voted = props.users[thisuser].votes[q.id];
+          const author = 'tylermcginnis';
+
           let vote;
           if (voted) {
-            vote = thisuser.votes[q.id];
+            vote = props.users[thisuser].votes[q.id];
           }
           return (
             <Card className="mb-4" key={q.id}>
@@ -30,7 +32,7 @@ const QuestionDetails = (props) => {
               </Card.Header>
               <Card.Body>
                 <Card.Title className="border-bottom pb-2 text-center">Would You Rather...</Card.Title>
-                <Card.Text className="d-flex justify-content-between border-bottom pb-2" style={rowstyle}>
+                <div className="d-flex justify-content-between border-bottom pb-2" style={rowstyle}>
                   <div className="pr-4 d-flex">
                     <div style={{ width: '100px', fontWeight: 'bold', display: 'inline-block' }}>
                       <div>
@@ -52,8 +54,8 @@ const QuestionDetails = (props) => {
                       Vote
                       </Button>
                   }
-                </Card.Text>
-                <Card.Text className="d-flex justify-content-between" style={rowstyle}>
+                </div>
+                <div className="d-flex justify-content-between" style={rowstyle}>
                   <div className="pr-4 d-flex">
                     <div style={{ width: '100px', fontWeight: 'bold', display: 'inline-block' }}>
                       <div>{q.case2.numvotes} Votes</div>
@@ -75,17 +77,17 @@ const QuestionDetails = (props) => {
                       Vote
                       </Button>
                   }
-                </Card.Text>
+                </div>
               </Card.Body>
               <Card.Footer className="d-flex">
-                <Card.Text>
-                  <img src={`/images/${authoruser.avatar}`} width="50px"></img> <strong>{q.author}</strong> <i className="secondary">posted </i> <strong>{q.time}</strong>
-                </Card.Text>
+                <div>
+                  <img src={`/images/${props.users[q.author].avatar}`} width="50px"></img> <strong>{q.author}</strong> <i className="secondary">posted </i> <strong>{q.date}</strong> <i> at </i> <strong>{q.time}</strong>
+                </div>
               </Card.Footer>
             </Card>
           )
-        })
-        }
+        }) 
+      }
 
       </div>
     )

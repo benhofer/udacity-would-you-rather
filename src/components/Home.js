@@ -10,22 +10,14 @@ const Home = (props) => {
   const [case1, setCase1] = useState(undefined);
   const [case2, setCase2] = useState(undefined);
 
-  var lsShowAnswered, lsShowUnanswered;
-
   const [showAnswered, setShowAnswered] = useState(false);
   const [showUnanswered, setShowUnanswered] = useState(true);
 
-  const setLsValue = (cbval, setval) => {
-    localStorage.setItem(cbval, setval);
-  }
-
   const handleAnsweredClick = () => {
-    showAnswered ? setLsValue('showAnswered', false) : setLsValue('showAnswered', true);
     setShowAnswered(showAnswered ? false : true);
   }
 
   const handleUnansweredClick = () => {
-    showUnanswered ? setLsValue('showUnanswered', false) : setLsValue('showUnanswered', true);
     setShowUnanswered(showUnanswered ? false : true)
   }
 
@@ -42,26 +34,11 @@ const Home = (props) => {
     setCase2(e.target.value);
   }
 
+  function generateUID () {
+    return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)
+  }
   const saveQuestion = () => {
-    saveQuestionAPI({
-      id: 'loxhs1bqm25b708cmbf3g',
-      author: 'tylermcginnis',
-      time: new Date().toString(),
-      description: 'Coding Skills',
-      case1: {
-        votes: [],
-        numvotes: 0,
-        text: 'be a front-end developer',
-      },
-      case2: {
-        votes: ['sarahedo'],
-        numvotes: 1,
-        text: 'be a back-end developer'
-      }
-    });
-    console.log('save Question by');
-    console.log(props.users.activeuser.id)
-    props.addQuestion(new Date().getTime(), title, case1, case2, props.users.activeuser.id);
+    props.addQuestion( generateUID(), title, case1, case2, props.authedUser);
   }
 
   const handleAskQuestion = () => {
@@ -87,7 +64,7 @@ const Home = (props) => {
         </Form>
       </div>
 
-      <QuestionsSummary handleAskQuestion={() => handleAskQuestion()} questions={props.questions} users={props.users} vote={props.vote} showAnswered={showAnswered} showUnanswered={showUnanswered} />
+      <QuestionsSummary handleAskQuestion={() => handleAskQuestion()} questions={props.questions} authedUser={props.authedUser} users={props.users} vote={props.vote} showAnswered={showAnswered} showUnanswered={showUnanswered} />
 
       {/* Modal */}
       <Modal id="newQuestionModal" fade>

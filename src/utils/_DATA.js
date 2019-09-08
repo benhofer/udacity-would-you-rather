@@ -45,7 +45,9 @@ let questions = {
     id: '8xf0y6ziyjabvozdd253nd',
     author: 'sarahedo',
     description: 'Memory',
-    time: new Date().toString(),
+    date: new Date().toLocaleDateString(),
+    time: new Date().toLocaleTimeString(),
+    ts: 1567905863845,
     case1: {
       votes: ['sarahedo'],
       numvotes: 1,
@@ -61,7 +63,9 @@ let questions = {
     id: '6ni6ok3ym7mf1p33lnez',
     author: 'johndoe',
     description: 'Superheroes',
-    time: new Date().toString(),
+    date: new Date().toLocaleDateString(),
+    time: new Date().toLocaleTimeString(),
+    ts: 1567905863846,    
     case1: {
       votes: [],
       numvotes: 0,
@@ -77,7 +81,9 @@ let questions = {
     id: 'am8ehyc8byjqgar0jgpub9',
     author: 'sarahedo',
     description: 'Super Powers',
-    time: new Date().toString(),
+    date: new Date().toLocaleDateString(),
+    time: new Date().toLocaleTimeString(),
+    ts: 1567905863847,    
     case1: {
       votes: [],
       numvotes: 0,
@@ -92,7 +98,9 @@ let questions = {
   'loxhs1bqm25b708cmbf3g': {
     id: 'loxhs1bqm25b708cmbf3g',
     author: 'tylermcginnis',
-    time: new Date().toString(),
+    date: new Date().toLocaleDateString(),
+    time: new Date().toLocaleTimeString(),
+    ts: 1567905863848,    
     description: 'Coding Skills',
     case1: {
       votes: [],
@@ -108,7 +116,9 @@ let questions = {
   'vthrdm985a262al8qx3do': {
     id: 'vthrdm985a262al8qx3do',
     author: 'tylermcginnis',
-    time: new Date().toString(),
+    date: new Date().toLocaleDateString(),
+    time: new Date().toLocaleTimeString(),
+    ts: 1567905863849,    
     description: 'Finders Keepers',
   
     case1: {
@@ -125,7 +135,9 @@ let questions = {
   'xj352vofupe1dqz9emx13r': {
     id: 'xj352vofupe1dqz9emx13r',
     author: 'johndoe',
-    time: new Date().toString(),
+    date: new Date().toLocaleDateString(),
+    time: new Date().toLocaleTimeString(),
+    ts: 1567905863850,    
     description: 'Programming Languages',
     case1: {
       votes: ['johndoe'],
@@ -145,7 +157,6 @@ export function generateUID() {
 }
 
 export function _getUsers() {
-  
   return new Promise((res, rej) => {
     setTimeout(() => res({ ...users }), 1000)
   })
@@ -160,7 +171,7 @@ export function _getQuestions() {
 function formatQuestion({ optionOneText, optionTwoText, author }) {
   return {
     id: generateUID(),
-    timestamp: Date.now(),
+    ts: Date.now(),
     author,
     optionOne: {
       votes: [],
@@ -175,19 +186,16 @@ function formatQuestion({ optionOneText, optionTwoText, author }) {
 
 export function _saveQuestion(question) {
   return new Promise((res, rej) => {
-    const authedUser = question.author;
-    const formattedQuestion = formatQuestion(question); 
+      const formattedQuestion = formatQuestion(question); 
  
     setTimeout(() => {
       questions = {
         ...questions,
         [formattedQuestion.id]: formattedQuestion
       }
-
       users = {
         ...users
       }
-
       res(formattedQuestion)
     }, 1000)
   })

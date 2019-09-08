@@ -4,9 +4,9 @@ import { Card } from 'bootstrap-4-react';
 
 const Leaderboard = (props) => {
   const rowstyle = { fontSize: '18px', lineHeight: 1.5 };
-  const [users] = [props.users.users, props.questions];
+  const [users] = [props.users];
 
-  let leaderboard = users.map((user) => {
+  let leaderboard = Object.values(users).map((user) => {
     const score = user.numquestions + user.numvotes;
 
     return (

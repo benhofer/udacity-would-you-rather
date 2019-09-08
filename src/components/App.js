@@ -7,7 +7,6 @@ import QuestionContainer from '../containers/QuestionContainer';
 import NoMatch from "./404Page";
 
 class App extends Component {
-
   render() {
     if (this.props) {
       return (
@@ -38,10 +37,10 @@ class App extends Component {
             </Navbar.Nav>
             <div>
               Logged in as {
-                this.props.users.toString()
+                this.props.authedUser.toString()
               }
             </div>
-          
+
           </Navbar>
           <Switch>
             <Route path={`${this.props.match.path}`} exact component={HomeContainer} />

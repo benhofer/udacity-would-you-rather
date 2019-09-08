@@ -1,4 +1,4 @@
-export const RECEIVE_USERS = 'RECEIVE_USERS'
+import { RECEIVE_USERS } from '../constants/constants'
 
 export function receiveUsers (users) {
   return {

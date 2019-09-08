@@ -4,10 +4,11 @@ import { ADD_QUESTION, VOTE } from '../constants/constants';
 import { withRouter } from 'react-router-dom'
 
 const mapStateToProps = (state, { match }) => {
-  const question = state.questions.filter((q) => q.id == match.params.question_id);
+  const question = Object.values(state.questions).filter((q) => q.id === match.params.question_id);
   return {
     q: question,
-    users: state.users
+    users: state.users,
+    authedUser: state.authedUser
   }
 }
 
