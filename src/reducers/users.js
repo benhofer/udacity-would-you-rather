@@ -16,7 +16,10 @@ export default function users(state = {}, action) {
     case ADD_QUESTION:
       return {
         ...state,
-        numquestions: state.numquestions + 1
+        [action.author] : {
+          ...state[action.author], 
+          numquestions: state[action.author].numquestions + 1
+        }
       }
 
     case VOTE:
