@@ -17,6 +17,9 @@
     "redux-thunk": "^2.3.0",
     "yarn": "^1.22.0"
   },
+  "devDependencies": {
+    "immer": ">=8.0.1"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
