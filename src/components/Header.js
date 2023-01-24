@@ -5,6 +5,15 @@ import { getInitialData } from "../utils/api";
 
 function Header(props) {
   const [authedUserData, setAuthedUserData] = useState(undefined);
+  const [logoutView, setLogoutView] = useState(false);
+
+  const logoutOn = () => {
+    setLogoutView(true);
+  };
+
+  const logoutOff = () => {
+    setLogoutView(false);
+  };
 
   useEffect(() => {
     getInitialData()
@@ -12,7 +21,7 @@ function Header(props) {
         setAuthedUserData(res.users[props.authedUser]);
       })
       .catch((error) => console.log(error));
-  }, []);
+  }, [props.authedUser]);
 
   console.log(authedUserData);
 
@@ -43,15 +52,15 @@ function Header(props) {
             Leaderboard
           </Link>
         </Nav.Item>
-        <Nav.Item>
-          <Link className='nav-link' to='/'>
-            Logout
-          </Link>
-        </Nav.Item>
       </Navbar.Nav>
       {authedUserData && (
-        <div>
-          Logged in as {authedUserData.name}
+        <div onMouseEnter={logoutOn} onMouseLeave={logoutOff}>
+          {!logoutView && <span>Logged in as {authedUserData.name}</span>}
+          {logoutView && (
+            <Link to='/' style={{ display: "inline" }}>
+              Logout
+            </Link>
+          )}
           <img
             src={`/images/${authedUserData.avatar}`}
             width='30'
