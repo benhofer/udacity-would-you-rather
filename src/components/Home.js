@@ -54,7 +54,7 @@ const Home = (props) => {
         style={{ maxWidth: "800px", margin: "0 auto" }}
       >
         <Button primary data-toggle='modal' data-target='#newQuestionModal'>
-          New Question
+          New Card
         </Button>
         <Form>
           <Form.Group>
@@ -89,7 +89,7 @@ const Home = (props) => {
         <Modal.Dialog>
           <Modal.Content>
             <Modal.Header>
-              <Modal.Title>Add Question</Modal.Title>
+              <Modal.Title>New Card</Modal.Title>
               <Modal.Close>
                 <span aria-hidden='true'>&times;</span>
               </Modal.Close>
@@ -99,56 +99,62 @@ const Home = (props) => {
               <div className='form-group'>
                 <label
                   htmlFor='titleInput'
-                  style={{ width: "100%", textAlign: "center" }}
+                  style={{
+                    width: "100%",
+                    textAlign: "center",
+                    display: "none",
+                  }}
                 >
-                  Title
+                  Card Title
                 </label>
                 <input
                   onKeyUp={handleTitleKeyUp}
                   type='text'
                   className='form-control'
                   id='titleInput'
-                  placeholder='Enter title'
+                  placeholder='Card title'
                 ></input>
               </div>
-              <h2 style={{ textAlign: "center" }}>Would you rather ...</h2>
-              <div className='form-group'>
-                <input
-                  onKeyUp={handleCase1KeyUp}
-                  type='text'
-                  className='form-control'
-                  id='case1Input'
-                  placeholder='Case 1'
-                />
-              </div>
-              <div className='form-group'>
-                <label
-                  htmlFor='case2Input'
-                  style={{ textAlign: "center", width: "100%" }}
+              <div style={{ padding: "1rem", border: "1px solid black" }}>
+                <h2 style={{ textAlign: "center" }}>Would you rather ...</h2>
+                <div className='form-group'>
+                  <input
+                    onKeyUp={handleCase1KeyUp}
+                    type='text'
+                    className='form-control'
+                    id='case1Input'
+                    placeholder='Case 1'
+                  />
+                </div>
+                <div className='form-group'>
+                  <label
+                    htmlFor='case2Input'
+                    style={{ textAlign: "center", width: "100%" }}
+                  >
+                    OR
+                  </label>
+                  <input
+                    onKeyUp={handleCase2KeyUp}
+                    type='text'
+                    className='form-control'
+                    id='case2Input'
+                    placeholder='Case 2'
+                  />
+                </div>
+                <h2
+                  style={{
+                    textAlign: "center",
+                    margin: "0 auto",
+                    width: "40px",
+                    height: "40px",
+                    borderRadius: "40px",
+                    background: "black",
+                    color: "white",
+                  }}
                 >
-                  OR
-                </label>
-                <input
-                  onKeyUp={handleCase2KeyUp}
-                  type='text'
-                  className='form-control'
-                  id='case2Input'
-                  placeholder='Case 2'
-                />
+                  ?
+                </h2>
               </div>
-              <h2
-                style={{
-                  textAlign: "center",
-                  margin: "0 auto",
-                  width: "40px",
-                  height: "40px",
-                  borderRadius: "40px",
-                  background: "black",
-                  color: "white",
-                }}
-              >
-                ?
-              </h2>
             </Modal.Body>
 
             <Modal.Footer>
