@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Bootstrap, { Button, Modal, Form } from "bootstrap-4-react";
 import QuestionsSummary from "./QuestionsSummary";
 import Checkbox from "./Checkbox";
-import { saveQuestionAPI } from "../utils/api";
 
 const Home = (props) => {
   const [title, setTitle] = useState(undefined);

@@ -27,7 +27,7 @@ let users = {
   },
   richard: {
     id: "richard",
-    name: "richard",
+    name: "Richard",
     active: false,
     avatar: "richard.png",
     votes: {
