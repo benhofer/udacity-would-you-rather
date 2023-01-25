@@ -9,8 +9,6 @@ const QuestionDetails = (props) => {
     props.vote(props.q[0].id, props.authedUser, whichcase);
   };
 
-  const handleGoBack = () => {};
-
   if (props.authedUser) {
     const thisuser = props.authedUser;
 
