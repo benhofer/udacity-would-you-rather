@@ -55,12 +55,10 @@ function Header(props) {
       </Navbar.Nav>
       {authedUserData && (
         <div onMouseEnter={logoutOn} onMouseLeave={logoutOff}>
-          {!logoutView && <span>Logged in as {authedUserData.name}</span>}
-          {logoutView && (
-            <Link to='/' style={{ display: "inline" }}>
-              Logout
-            </Link>
-          )}
+          <span>Logged in as {authedUserData.name}</span> | &nbsp;
+          <Link to='/' style={{ display: "inline" }}>
+            Logout
+          </Link>
           <img
             src={`/images/${authedUserData.avatar}`}
             width='30'
