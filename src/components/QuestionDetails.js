@@ -110,6 +110,7 @@ const QuestionDetails = (props) => {
                 <Card.Footer className='d-flex'>
                   <div>
                     <img
+                      alt=''
                       src={`/images/${props.users[q.author].avatar}`}
                       width='50px'
                     ></img>{" "}
