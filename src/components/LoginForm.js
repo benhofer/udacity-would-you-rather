@@ -38,10 +38,18 @@ const LoginForm = (props) => {
             <div>
               <span
                 className='btn btn-primary'
+                tabIndex='0'
                 to='/app'
                 onClick={() =>
                   handleSignIn(document.getElementById("selectUser").value)
                 }
+                onKeyUp={(e) => {
+                  if (e.key === "Enter") {
+                    handleSignIn(document.getElementById("selectUser").value);
+                  } else {
+                    return;
+                  }
+                }}
               >
                 Sign In
               </span>
