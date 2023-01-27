@@ -12,3 +12,11 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.navbar.navbar-light {
+  box-shadow: inset 0px -5px 10px #eee;
+}
+
+.navbar .nav-link.active {
+  border-bottom: 2px solid #007bff;
+}
