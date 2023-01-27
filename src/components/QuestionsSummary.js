@@ -43,9 +43,10 @@ const QuestionsSummary = (props) => {
 
     return (
       <div key={q.ts} value={q.time}>
-        {props.showAnswered &&
+        {/* {console.log("QS Filters", props.filters.filters)} */}
+        {props?.filters?.filters?.answered &&
           (thisuser.votes[q.id] ? card(q, authoruser) : "")}
-        {props.showUnanswered &&
+        {props?.filters?.filters?.unanswered &&
           (thisuser.votes[q.id] ? "" : card(q, authoruser))}
       </div>
     );

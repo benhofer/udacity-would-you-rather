@@ -46,12 +46,6 @@ const LoginForm = (props) => {
                 Sign In
               </span>
             </div>
-            <small style={{ float: "right" }}>
-              User images courtesy of{" "}
-              <a target='_blank' href='https://unsplash.com/' rel='noreferrer'>
-                Unsplash
-              </a>
-            </small>
           </Form>
         </Card.Body>
       </Card>

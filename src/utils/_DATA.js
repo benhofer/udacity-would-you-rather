@@ -40,6 +40,11 @@ let users = {
   },
 };
 
+let filters = {
+  answered: false,
+  unanswered: true,
+};
+
 let questions = {
   "8xf0y6ziyjabvozdd253nd": {
     id: "8xf0y6ziyjabvozdd253nd",
@@ -152,6 +157,8 @@ let questions = {
   },
 };
 
+const loadingtime = 500;
+
 export function generateUID() {
   return (
     Math.random().toString(36).substring(2, 15) +
@@ -161,13 +168,19 @@ export function generateUID() {
 
 export function _getUsers() {
   return new Promise((res, rej) => {
-    setTimeout(() => res({ ...users }), 1000);
+    setTimeout(() => res({ ...users }), loadingtime);
   });
 }
 
 export function _getQuestions() {
   return new Promise((res, rej) => {
-    setTimeout(() => res({ ...questions }), 1000);
+    setTimeout(() => res({ ...questions }), loadingtime);
+  });
+}
+
+export function _getFilters() {
+  return new Promise((res, rej) => {
+    setTimeout(() => res({ ...filters }), loadingtime);
   });
 }
 
@@ -200,7 +213,7 @@ export function _saveQuestion(question) {
         ...users,
       };
       res(formattedQuestion);
-    }, 1000);
+    }, loadingtime);
   });
 }
 
@@ -230,6 +243,6 @@ export function _saveQuestionAnswer({ authedUser, qid, answer }) {
       };
 
       res();
-    }, 500);
+    }, loadingtime);
   });
 }

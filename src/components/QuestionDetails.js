@@ -22,7 +22,6 @@ const QuestionDetails = (props) => {
         {props.q.length === 1 &&
           props.q.map((q) => {
             const voted = props.users[thisuser].votes[q.id];
-            const author = "tylermcginnis";
 
             let vote;
             if (voted) {

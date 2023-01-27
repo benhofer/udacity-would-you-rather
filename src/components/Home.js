@@ -1,23 +1,26 @@
 import React, { useState } from "react";
 import Bootstrap, { Button, Modal, Form } from "bootstrap-4-react";
 import QuestionsSummary from "./QuestionsSummary";
-import Checkbox from "./Checkbox";
+import FilterControlsContainer from "../containers/FilterControlsContainer";
 
 const Home = (props) => {
   const [title, setTitle] = useState(undefined);
   const [case1, setCase1] = useState(undefined);
   const [case2, setCase2] = useState(undefined);
 
+  // console.log(props);
+
   const [showAnswered, setShowAnswered] = useState(false);
   const [showUnanswered, setShowUnanswered] = useState(true);
 
-  const handleAnsweredClick = () => {
-    setShowAnswered(showAnswered ? false : true);
-  };
+  // const handleAnsweredClick = () => {
+  //   // setShowAnswered(showAnswered ? false : true);
 
-  const handleUnansweredClick = () => {
-    setShowUnanswered(showUnanswered ? false : true);
-  };
+  // };
+
+  // const handleUnansweredClick = () => {
+  //   setShowUnanswered(showUnanswered ? false : true);
+  // };
 
   const handleTitleKeyUp = (e) => {
     const val = e.target.value;
@@ -55,28 +58,15 @@ const Home = (props) => {
         <Button primary data-toggle='modal' data-target='#newQuestionModal'>
           New Card
         </Button>
-        <Form>
-          <Form.Group>
-            <div className='d-flex'>
-              <Checkbox
-                label="Questions I've Answered"
-                isSelected={showAnswered}
-                onCheckboxChange={handleAnsweredClick}
-              />
-              <Checkbox
-                label="Questions I Haven't"
-                isSelected={showUnanswered}
-                onCheckboxChange={handleUnansweredClick}
-              />
-            </div>
-          </Form.Group>
-        </Form>
+
+        <FilterControlsContainer />
       </div>
 
       <QuestionsSummary
         handleAskQuestion={() => handleAskQuestion()}
         questions={props.questions}
         authedUser={props.authedUser}
+        filters={props.filters}
         users={props.users}
         vote={props.vote}
         showAnswered={showAnswered}

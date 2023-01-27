@@ -14,7 +14,7 @@ function Header(props) {
       .catch((error) => console.log(error));
   }, [props.authedUser]);
 
-  console.log(authedUserData);
+  // console.log(authedUserData);
 
   return (
     <Navbar expand='lg' light bg='light'>
