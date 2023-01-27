@@ -5,15 +5,6 @@ import { getInitialData } from "../utils/api";
 
 function Header(props) {
   const [authedUserData, setAuthedUserData] = useState(undefined);
-  const [logoutView, setLogoutView] = useState(false);
-
-  const logoutOn = () => {
-    setLogoutView(true);
-  };
-
-  const logoutOff = () => {
-    setLogoutView(false);
-  };
 
   useEffect(() => {
     getInitialData()
@@ -54,7 +45,7 @@ function Header(props) {
         </Nav.Item>
       </Navbar.Nav>
       {authedUserData && (
-        <div onMouseEnter={logoutOn} onMouseLeave={logoutOff}>
+        <div>
           <span>Logged in as {authedUserData.name}</span> | &nbsp;
           <Link to='/' style={{ display: "inline" }}>
             Logout
