@@ -38,10 +38,7 @@ const Leaderboard = (props) => {
             ></img>
           </div>
           <div>
-            <Card.Text
-              className='d-flex justify-content-between'
-              style={rowstyle}
-            >
+            <div className='d-flex justify-content-between' style={rowstyle}>
               <div className='pr-4 d-flex'>
                 <div>
                   <div style={{ fontSize: "5rem", textAlign: "center" }}>
@@ -50,7 +47,7 @@ const Leaderboard = (props) => {
                   Total Points
                 </div>
               </div>
-            </Card.Text>
+            </div>
           </div>
           <div style={{ height: "180px", width: "300px" }}>
             <MyResponsivePie data={data} />
