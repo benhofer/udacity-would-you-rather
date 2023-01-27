@@ -2,6 +2,7 @@ import React from "react";
 import { Card, Button, Alert } from "bootstrap-4-react";
 import NoMatch from "./404Page";
 import { Link } from "react-router-dom";
+import { Icon } from "@iconify/react";
 
 const QuestionDetails = (props) => {
   const rowstyle = { fontSize: "18px", lineHeight: 1.5 };
@@ -15,7 +16,8 @@ const QuestionDetails = (props) => {
     return (
       <div className='p-3' style={{ maxWidth: "800px", margin: "0 auto" }}>
         <Link style={{ display: "block", marginBottom: ".5rem" }} to='/app'>
-          Back
+          <Icon icon='material-symbols:arrow-back' width='1rem' />
+          &nbsp; Back
         </Link>
         {props.q.length === 0 && <NoMatch />}
 
@@ -64,7 +66,11 @@ const QuestionDetails = (props) => {
                       </div>
                       <div>&bull; {q.case1.text}</div>
                     </div>
-                    {voted && vote === "case1" && <Alert info>YOUR VOTE</Alert>}
+                    {voted && vote === "case1" && (
+                      <Alert info>
+                        <Icon width='2rem' icon='material-symbols:check' />
+                      </Alert>
+                    )}
                     {!voted && (
                       <Button onClick={() => handleVote("case1")} primary>
                         Vote
@@ -98,7 +104,11 @@ const QuestionDetails = (props) => {
                       </div>
                       <div>&bull; {q.case2.text}</div>
                     </div>
-                    {voted && vote === "case2" && <Alert info>YOUR VOTE</Alert>}
+                    {voted && vote === "case2" && (
+                      <Alert info>
+                        <Icon width='2rem' icon='material-symbols:check' />
+                      </Alert>
+                    )}
                     {!voted && (
                       <Button primary onClick={() => handleVote("case2")}>
                         Vote

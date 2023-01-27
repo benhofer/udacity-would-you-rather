@@ -2,25 +2,12 @@ import React, { useState } from "react";
 import Bootstrap, { Button, Modal, Form } from "bootstrap-4-react";
 import QuestionsSummary from "./QuestionsSummary";
 import FilterControlsContainer from "../containers/FilterControlsContainer";
+import { Icon } from "@iconify/react";
 
 const Home = (props) => {
   const [title, setTitle] = useState(undefined);
   const [case1, setCase1] = useState(undefined);
   const [case2, setCase2] = useState(undefined);
-
-  // console.log(props);
-
-  const [showAnswered, setShowAnswered] = useState(false);
-  const [showUnanswered, setShowUnanswered] = useState(true);
-
-  // const handleAnsweredClick = () => {
-  //   // setShowAnswered(showAnswered ? false : true);
-
-  // };
-
-  // const handleUnansweredClick = () => {
-  //   setShowUnanswered(showUnanswered ? false : true);
-  // };
 
   const handleTitleKeyUp = (e) => {
     const val = e.target.value;
@@ -56,7 +43,8 @@ const Home = (props) => {
         style={{ maxWidth: "800px", margin: "0 auto" }}
       >
         <Button primary data-toggle='modal' data-target='#newQuestionModal'>
-          New Card
+          <Icon icon='ic:baseline-plus' />
+          &nbsp;New Card
         </Button>
 
         <FilterControlsContainer />
@@ -69,8 +57,6 @@ const Home = (props) => {
         filters={props.filters}
         users={props.users}
         vote={props.vote}
-        showAnswered={showAnswered}
-        showUnanswered={showUnanswered}
       />
 
       {/* Modal */}
@@ -78,7 +64,10 @@ const Home = (props) => {
         <Modal.Dialog>
           <Modal.Content>
             <Modal.Header>
-              <Modal.Title>New Card</Modal.Title>
+              <Modal.Title>
+                <Icon icon='material-symbols:plus' />
+                New Card
+              </Modal.Title>
               <Modal.Close>
                 <span aria-hidden='true'>&times;</span>
               </Modal.Close>

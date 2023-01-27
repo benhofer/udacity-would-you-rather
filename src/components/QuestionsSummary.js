@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
 import { Card, Badge } from "bootstrap-4-react";
 import { Link } from "react-router-dom";
+import { Icon } from "@iconify/react";
 
 const QuestionsSummary = (props) => {
   let thisuser = "";
@@ -18,22 +19,24 @@ const QuestionsSummary = (props) => {
         <Link to={`/app/questions/${q.id}`}>{q.description}</Link>
         {thisuser.votes[q.id] ? (
           <Badge bg='primary' style={{ float: "right", color: "white" }}>
-            I Voted
+            <Icon icon='material-symbols:check' />
+            &nbsp;I Voted
           </Badge>
         ) : (
           ""
         )}
       </Card.Header>
       <Card.Body>
-        <Card.Text>
+        <div>
           <img
+            alt={authoruser.name}
             src={`/images/${authoruser.avatar}`}
-            width='50px'
+            width='30px'
             className='mr-4'
           ></img>
           <strong>{q.author}</strong> <i className='secondary'>Posted</i>{" "}
           <strong>{q.date}</strong> <i> at </i> <strong>{q.time}</strong>
-        </Card.Text>
+        </div>
       </Card.Body>
     </Card>
   );
