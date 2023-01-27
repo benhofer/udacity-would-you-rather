@@ -8,17 +8,21 @@ const Home = (props) => {
   const [title, setTitle] = useState(undefined);
   const [case1, setCase1] = useState(undefined);
   const [case2, setCase2] = useState(undefined);
+  const [error, setError] = useState(false);
 
   const handleTitleKeyUp = (e) => {
+    setError(false);
     const val = e.target.value;
     setTitle(val);
   };
 
   const handleCase1KeyUp = (e) => {
+    setError(false);
     setCase1(e.target.value);
   };
 
   const handleCase2KeyUp = (e) => {
+    setError(false);
     setCase2(e.target.value);
   };
 
@@ -29,7 +33,19 @@ const Home = (props) => {
     );
   }
   const saveQuestion = () => {
-    props.addQuestion(generateUID(), title, case1, case2, props.authedUser);
+    if (
+      title &&
+      title.length > 0 &&
+      case1 &&
+      case1.length > 0 &&
+      case2 &&
+      case2.length > 0
+    ) {
+      props.addQuestion(generateUID(), title, case1, case2, props.authedUser);
+      Bootstrap.modal("#newQuestionModal", "hide");
+    } else {
+      setError(true);
+    }
   };
 
   const handleAskQuestion = () => {
@@ -42,7 +58,11 @@ const Home = (props) => {
         className='d-flex pb-4 justify-content-between'
         style={{ maxWidth: "800px", margin: "0 auto" }}
       >
-        <Button primary data-toggle='modal' data-target='#newQuestionModal'>
+        <Button
+          primary
+          onClick={() => Bootstrap.modal("#newQuestionModal")}
+          data-target='#newQuestionModal'
+        >
           <Icon icon='ic:baseline-plus' />
           &nbsp;New Card
         </Button>
@@ -74,6 +94,11 @@ const Home = (props) => {
             </Modal.Header>
 
             <Modal.Body>
+              {error && (
+                <div className='alert alert-danger' role='alert'>
+                  Please fill in all the fields - Title, Case 1 and Case 2.
+                </div>
+              )}
               <div className='form-group'>
                 <label
                   htmlFor='titleInput'
@@ -139,7 +164,7 @@ const Home = (props) => {
               <Button secondary data-dismiss='modal'>
                 Close
               </Button>
-              <Button primary data-dismiss='modal' onClick={saveQuestion}>
+              <Button primary onClick={saveQuestion}>
                 Save Question
               </Button>
             </Modal.Footer>
