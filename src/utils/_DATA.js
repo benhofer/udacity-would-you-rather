@@ -1,9 +1,9 @@
 let users = {
-  scarlett: {
-    id: "scarlett",
+  Scarlett: {
+    id: "Scarlett",
     name: "Scarlett",
     active: false,
-    avatar: "scarlett.png",
+    avatar: "Scarlett.png",
     numvotes: 4,
     numquestions: 2,
     votes: {
@@ -13,11 +13,11 @@ let users = {
       loxhs1bqm25b708cmbf3g: "case2",
     },
   },
-  tom: {
-    id: "tom",
+  Tom: {
+    id: "Tom",
     name: "Tom",
     active: false,
-    avatar: "tom.png",
+    avatar: "Tom.png",
     votes: {
       vthrdm985a262al8qx3do: "case1",
       xj352vofupe1dqz9emx13r: "case2",
@@ -25,11 +25,11 @@ let users = {
     numvotes: 2,
     numquestions: 2,
   },
-  richard: {
-    id: "richard",
+  Richard: {
+    id: "Richard",
     name: "Richard",
     active: false,
-    avatar: "richard.png",
+    avatar: "Richard.png",
     votes: {
       xj352vofupe1dqz9emx13r: "case1",
       vthrdm985a262al8qx3do: "case2",
@@ -48,13 +48,13 @@ let filters = {
 let questions = {
   "8xf0y6ziyjabvozdd253nd": {
     id: "8xf0y6ziyjabvozdd253nd",
-    author: "scarlett",
+    author: "Scarlett",
     description: "Memory",
     date: new Date().toLocaleDateString(),
     time: new Date().toLocaleTimeString(),
     ts: 1567905863845,
     case1: {
-      votes: ["scarlett"],
+      votes: ["Scarlett"],
       numvotes: 1,
       text: "have horrible short term memory",
     },
@@ -66,7 +66,7 @@ let questions = {
   },
   "6ni6ok3ym7mf1p33lnez": {
     id: "6ni6ok3ym7mf1p33lnez",
-    author: "richard",
+    author: "Richard",
     description: "Superheroes",
     date: new Date().toLocaleDateString(),
     time: new Date().toLocaleTimeString(),
@@ -77,14 +77,14 @@ let questions = {
       text: "become a superhero",
     },
     case2: {
-      votes: ["richard", "scarlett"],
+      votes: ["Richard", "Scarlett"],
       numvotes: 2,
       text: "become a supervillain",
     },
   },
   am8ehyc8byjqgar0jgpub9: {
     id: "am8ehyc8byjqgar0jgpub9",
-    author: "scarlett",
+    author: "Scarlett",
     description: "Super Powers",
     date: new Date().toLocaleDateString(),
     time: new Date().toLocaleTimeString(),
@@ -95,14 +95,14 @@ let questions = {
       text: "be telekinetic",
     },
     case2: {
-      votes: ["scarlett"],
+      votes: ["Scarlett"],
       numvotes: 1,
       text: "be telepathic",
     },
   },
   loxhs1bqm25b708cmbf3g: {
     id: "loxhs1bqm25b708cmbf3g",
-    author: "tom",
+    author: "Tom",
     date: new Date().toLocaleDateString(),
     time: new Date().toLocaleTimeString(),
     ts: 1567905863848,
@@ -113,44 +113,44 @@ let questions = {
       text: "be a front-end developer",
     },
     case2: {
-      votes: ["scarlett"],
+      votes: ["Scarlett"],
       numvotes: 1,
       text: "be a back-end developer",
     },
   },
   vthrdm985a262al8qx3do: {
     id: "vthrdm985a262al8qx3do",
-    author: "tom",
+    author: "Tom",
     date: new Date().toLocaleDateString(),
     time: new Date().toLocaleTimeString(),
     ts: 1567905863849,
     description: "Finders Keepers",
 
     case1: {
-      votes: ["tom"],
+      votes: ["Tom"],
       numvotes: 1,
       text: "find $50 yourself",
     },
     case2: {
-      votes: ["richard"],
+      votes: ["Richard"],
       numvotes: 1,
       text: "have your best friend find $500",
     },
   },
   xj352vofupe1dqz9emx13r: {
     id: "xj352vofupe1dqz9emx13r",
-    author: "richard",
+    author: "Richard",
     date: new Date().toLocaleDateString(),
     time: new Date().toLocaleTimeString(),
     ts: 1567905863850,
     description: "Programming Languages",
     case1: {
-      votes: ["richard"],
+      votes: ["Richard"],
       numvotes: 1,
       text: "write JavaScript",
     },
     case2: {
-      votes: ["tom"],
+      votes: ["Tom"],
       numvotes: 1,
       text: "write Swift",
     },

@@ -10,14 +10,16 @@ const LoginForm = (props) => {
     let id;
     switch (name) {
       case "Tom":
-        id = "tom";
+        id = "Tom";
         break;
       case "Scarlett":
-        id = "scarlett";
+        id = "Scarlett";
         break;
       case "Richard":
-        id = "richard";
+        id = "Richard";
         break;
+      default:
+        console.error("The selected name has no match.");
     }
     props.getData(id, addHistory);
   };
