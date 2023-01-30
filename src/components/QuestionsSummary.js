@@ -30,7 +30,7 @@ const QuestionsSummary = (props) => {
         <div>
           <img
             alt={authoruser.name}
-            src={`/images/${authoruser.avatar}`}
+            src={authoruser.avatar}
             width='30px'
             className='mr-4'
           ></img>

@@ -31,11 +31,7 @@ const Leaderboard = (props) => {
         </Card.Header>
         <Card.Body className='d-flex justify-content-between leaderboard-card-body'>
           <div className='pr-4'>
-            <img
-              alt={user.name}
-              src={`/images/${user.avatar}`}
-              width='150px'
-            ></img>
+            <img alt={user.name} src={user.avatar} width='150px'></img>
           </div>
           <div>
             <div className='d-flex justify-content-between' style={rowstyle}>
