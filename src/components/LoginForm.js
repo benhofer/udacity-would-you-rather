@@ -1,5 +1,8 @@
 import React from "react";
 import { Form, Card } from "bootstrap-4-react";
+import tom from "../assets/images/tom.png";
+import scarlett from "../assets/images/scarlett.png";
+import richard from "../assets/images/richard.png";
 
 const LoginForm = (props) => {
   const addHistory = () => {

@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Nav, Navbar } from "bootstrap-4-react";
 import { Link } from "react-router-dom";
 import { getInitialData } from "../utils/api";
+import tom from "../assets/images/tom.png";
+import { ThemeProvider } from "@nivo/core";
 
 function Header(props) {
   const [authedUserData, setAuthedUserData] = useState(undefined);
@@ -13,8 +15,6 @@ function Header(props) {
       })
       .catch((error) => console.log(error));
   }, [props.authedUser]);
-
-  // console.log(authedUserData);
 
   return (
     <Navbar expand='lg' light bg='light'>
@@ -55,7 +55,7 @@ function Header(props) {
             Logout
           </Link>
           <img
-            src={`/images/${authedUserData.avatar}`}
+            src={authedUserData.avatar}
             width='30'
             alt=''
             style={{ marginLeft: ".5rem" }}

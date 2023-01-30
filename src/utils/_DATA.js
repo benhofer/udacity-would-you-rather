@@ -1,9 +1,13 @@
+import scarlett from "../assets/images/scarlett.png";
+import tom from "../assets/images/tom.png";
+import richard from "../assets/images/richard.png";
+
 let users = {
   Scarlett: {
     id: "Scarlett",
     name: "Scarlett",
     active: false,
-    avatar: "Scarlett.png",
+    avatar: scarlett,
     numvotes: 4,
     numquestions: 2,
     votes: {
@@ -17,7 +21,7 @@ let users = {
     id: "Tom",
     name: "Tom",
     active: false,
-    avatar: "Tom.png",
+    avatar: tom,
     votes: {
       vthrdm985a262al8qx3do: "case1",
       xj352vofupe1dqz9emx13r: "case2",
@@ -29,7 +33,7 @@ let users = {
     id: "Richard",
     name: "Richard",
     active: false,
-    avatar: "Richard.png",
+    avatar: richard,
     votes: {
       xj352vofupe1dqz9emx13r: "case1",
       vthrdm985a262al8qx3do: "case2",

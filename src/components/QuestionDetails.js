@@ -120,7 +120,7 @@ const QuestionDetails = (props) => {
                   <div>
                     <img
                       alt=''
-                      src={`/images/${props.users[q.author].avatar}`}
+                      src={props.users[q.author].avatar}
                       width='50px'
                     ></img>{" "}
                     <strong>{q.author}</strong>{" "}
