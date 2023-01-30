@@ -1,14 +1,16 @@
 import React from "react";
 
 const Checkbox = (props) => (
-  <div className="form-check mr-4">
+  <div className='form-check mr-4'>
     <label>
       <input
-        type="checkbox"
+        type='checkbox'
         name={props.label}
         checked={props.isSelected}
-        onChange={props.onCheckboxChange}
-        className="form-check-input"
+        onChange={(e) => {
+          props.onCheckboxChange(e);
+        }}
+        className='form-check-input'
       />
       {props.label}
     </label>

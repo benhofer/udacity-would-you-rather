@@ -4,13 +4,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 This is an assigned project for a React Nanodegree on Udacity.com. It is a simple survey app that allows users to create and/or answer survey questions. There is no backend as part of this assignment as per the requirements so the questions and answers are not persisted if the users refresh the page. Also, there are several users precreated to choose from.
 
-### Avatar Images
-
-The user avatars are royalty-free photos that were downloaded from unsplash.com. 
-
 ## Installing and Setup
 
-To install the project dependencies, run 'npm install'. Then run 'npm start' to start the server.  
+To install the project dependencies, run 'npm install'. Then run 'npm start' to start the server.
 
 ---
 
