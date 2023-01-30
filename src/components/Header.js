@@ -18,7 +18,7 @@ function Header(props) {
 
   return (
     <Navbar expand='lg' light bg='light'>
-      <Navbar.Brand href='#'>Would You Rather App</Navbar.Brand>
+      <Navbar.Brand>Would You Rather App</Navbar.Brand>
       <Navbar.Nav mr='auto'>
         <Nav.Item>
           <Link
