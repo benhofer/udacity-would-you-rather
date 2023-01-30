@@ -10,7 +10,7 @@ const QuestionsSummary = (props) => {
     thisuser = props.users[props.authedUser];
   } else {
     // Simulate an HTTP redirect:
-    window.location.replace("http://localhost:3000/");
+    window.location.replace("/");
   }
 
   const card = (q, authoruser) => (
