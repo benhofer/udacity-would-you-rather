@@ -15,7 +15,6 @@ code {
 
 .navbar-nav {
   flex-direction: row!important;
-  margin-bottom: 0.5rem!important;
 }
 
 .navbar-expand-lg .navbar-nav .nav-link {
@@ -42,6 +41,9 @@ code {
   .new-card-btn {
     max-width: 250px;
     margin-bottom: 1rem;
+  }
+  .logged-in-as {
+    display: none;
   }
 }
 

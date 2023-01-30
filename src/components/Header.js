@@ -46,7 +46,11 @@ function Header(props) {
       </Navbar.Nav>
       {authedUserData && (
         <div>
-          <span>Logged in as {authedUserData.name}</span> | &nbsp;
+          <span>
+            <span className='logged-in-as'>Logged in as</span>{" "}
+            {authedUserData.name}
+          </span>{" "}
+          | &nbsp;
           <Link to='/' style={{ display: "inline" }}>
             Logout
           </Link>
