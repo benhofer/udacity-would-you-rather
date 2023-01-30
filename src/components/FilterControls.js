@@ -6,7 +6,7 @@ const FilterControls = (props) => {
   console.log(props);
 
   const handleCheckAnswered = (e) => {
-    console.log(props);
+    // console.log(props);
 
     props.changeFilters({
       ...props.filters.filters,

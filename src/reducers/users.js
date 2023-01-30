@@ -1,42 +1,37 @@
-import {
-  VOTE,
-  ADD_QUESTION,
-  RECEIVE_USERS
-} from '../constants/constants'
+import { VOTE, ADD_QUESTION, RECEIVE_USERS } from "../constants/constants";
 
 export default function users(state = {}, action) {
   switch (action.type) {
-    
-    case RECEIVE_USERS :
+    case RECEIVE_USERS:
       return {
         ...state,
         ...action.users,
-      }
+      };
 
     case ADD_QUESTION:
       return {
         ...state,
-        [action.author] : {
-          ...state[action.author], 
-          numquestions: state[action.author].numquestions + 1
-        }
-      }
+        [action.author]: {
+          ...state[action.author],
+          numquestions: state[action.author].numquestions + 1,
+        },
+      };
 
     case VOTE:
-      console.log(action);
+      // console.log(action);
       return {
         ...state,
-        [action.user] : {
+        [action.user]: {
           ...state[action.user],
-          numvotes: state[action.user].numvotes+1,
+          numvotes: state[action.user].numvotes + 1,
           votes: {
             ...state[action.user].votes,
-            [action.id]: action.vote
+            [action.id]: action.vote,
           },
-        }
-      }
+        },
+      };
 
-    default: return state;
-
+    default:
+      return state;
   }
 }
