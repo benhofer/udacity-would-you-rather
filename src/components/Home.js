@@ -55,10 +55,11 @@ const Home = (props) => {
   return (
     <div className='p-3'>
       <div
-        className='d-flex pb-4 justify-content-between'
+        className='questions-list-header d-flex justify-content-between'
         style={{ maxWidth: "800px", margin: "0 auto" }}
       >
         <Button
+          className='new-card-btn'
           primary
           onClick={() => Bootstrap.modal("#newQuestionModal")}
           data-target='#newQuestionModal'

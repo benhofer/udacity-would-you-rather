@@ -29,7 +29,7 @@ const Leaderboard = (props) => {
         <Card.Header className='border-bottom pb-2'>
           <h1 style={{ fontSize: "1rem", fontWeight: 600 }}>{user.name}</h1>
         </Card.Header>
-        <Card.Body className='d-flex justify-content-between'>
+        <Card.Body className='d-flex justify-content-between leaderboard-card-body'>
           <div className='pr-4'>
             <img
               alt={user.name}

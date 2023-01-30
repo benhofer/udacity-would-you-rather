@@ -23,7 +23,7 @@ const FilterControls = (props) => {
 
   return (
     <Form>
-      <Form.Group>
+      <Form.Group className='voted-form-group'>
         <div className='d-flex'>
           <Checkbox
             label="Questions I've Voted On"
