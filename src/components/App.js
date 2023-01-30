@@ -33,7 +33,7 @@ class App extends Component {
       );
     } else {
       // Simulate an HTTP redirect:
-      window.location.replace("http://localhost:3000/");
+      window.location.replace("/");
     }
   }
 }
