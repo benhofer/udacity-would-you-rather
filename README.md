@@ -1,6 +1,4 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-See it in action at https://master.d2jo2yzx5ypc0r.amplifyapp.com/app!
+See the app in action at https://master.d2jo2yzx5ypc0r.amplifyapp.com/app!
 
 ## About this Project
 
@@ -11,6 +9,8 @@ This is an assigned project for a React Nanodegree on Udacity.com. It is a simpl
 To install the project dependencies, run 'npm install'. Then run 'npm start' to start the server.
 
 ---
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
